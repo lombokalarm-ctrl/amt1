@@ -204,7 +204,7 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
                       Daftar Booking Online
                     </button>
                     <a
-                      href={`https://wa.me/6281917711234?text=Assalamu%27alaikum%20saya%20membaca%20artikel%20terkait%20wilayah%20${readingArticle.city}%20dan%20tertarik%20bertanya%20paket%20umroh.`}
+                      href={`https://wa.me/6281907087999?text=Assalamu%27alaikum%20saya%20membaca%20artikel%20terkait%20wilayah%20${readingArticle.city}%20dan%20tertarik%20bertanya%20paket%20umroh.`}
                       target="_blank"
                       rel="noreferrer"
                       className="px-4 py-2 bg-emerald-950 hover:bg-emerald-800 text-emerald-300 font-bold text-xs rounded-xl text-center border border-emerald-800/50"

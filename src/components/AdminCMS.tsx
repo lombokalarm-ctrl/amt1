@@ -3,7 +3,8 @@ import { UmrahPackage, BlogPost, HeaderConfig, FooterConfig, StatsData, Booking,
 import { 
   Building, BookOpen, Settings, BarChart3, MailCheck, Edit, Trash2, 
   Plus, Check, RefreshCw, Sparkles, Send, Eye, ShieldCheck, 
-  HelpCircle, UserCheck, MessageCircle, AlertCircle, FileSpreadsheet, CheckSquare
+  HelpCircle, UserCheck, MessageCircle, AlertCircle, FileSpreadsheet, CheckSquare,
+  Lock, LogOut, KeyRound
 } from "lucide-react";
 
 interface AdminCMSProps {
@@ -32,6 +33,49 @@ export default function AdminCMS({
   onUpdateBlogs
 }: AdminCMSProps) {
   const [activeTab, setActiveTab] = useState<TabType>("stats");
+  
+  // Login Authentication States
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    return sessionStorage.getItem("admin_logged_in") === "true";
+  });
+  const [adminUsername, setAdminUsername] = useState("");
+  const [adminPassword, setAdminPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
+  const [isSubmittingLogin, setIsSubmittingLogin] = useState(false);
+
+  const handleLoginSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoginError("");
+    setIsSubmittingLogin(true);
+
+    try {
+      const res = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: adminUsername, password: adminPassword }),
+      });
+
+      if (res.ok) {
+        sessionStorage.setItem("admin_logged_in", "true");
+        setIsLoggedIn(true);
+      } else {
+        const data = await res.json();
+        setLoginError(data.error || "Username atau password salah!");
+      }
+    } catch (err) {
+      setLoginError("Gagal menghubungi server untuk verifikasi.");
+    } finally {
+      setIsSubmittingLogin(false);
+    }
+  };
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("admin_logged_in");
+    setIsLoggedIn(false);
+    setAdminUsername("");
+    setAdminPassword("");
+    setLoginError("");
+  };
   
   // Data States
   const [packages, setPackages] = useState<UmrahPackage[]>(initialPackages);
@@ -328,6 +372,96 @@ export default function AdminCMS({
     }
   };
 
+  if (!isLoggedIn) {
+    return (
+      <div id="admin-login-container" className="bg-neutral-900 border border-emerald-800/40 rounded-3xl overflow-hidden shadow-2xl text-white max-w-xl mx-auto py-12 px-6 sm:px-10 mt-6 md:mt-12">
+        <div className="flex flex-col items-center text-center space-y-4">
+          <div className="w-16 h-16 bg-amber-500/10 border border-amber-500/30 rounded-full flex items-center justify-center text-amber-400 shadow-inner">
+            <Lock className="w-8 h-8" />
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold font-sans tracking-tight text-white">
+              CMS Admin Login Gate
+            </h2>
+            <p className="text-xs text-neutral-400 mt-1 max-w-md">
+              Silakan masuk menggunakan kredensial akun administrator Amantubillahi Tour Lombok Anda untuk kelola data secara real-time.
+            </p>
+          </div>
+        </div>
+
+        <form onSubmit={handleLoginSubmit} className="space-y-5 mt-8">
+          {loginError && (
+            <div className="p-3 bg-red-950/40 border border-red-500/35 text-red-300 rounded-xl text-xs flex items-center gap-2.5">
+              <AlertCircle className="w-4 h-4 shrink-0 text-red-400" />
+              <span>{loginError}</span>
+            </div>
+          )}
+
+          <div className="space-y-1.5 animate-fade-in font-sans">
+            <label className="text-xs font-semibold text-neutral-300 block">Username Keamanan</label>
+            <input
+              type="text"
+              required
+              id="admin-username-input"
+              placeholder="Masukkan username admin..."
+              value={adminUsername}
+              onChange={(e) => setAdminUsername(e.target.value)}
+              className="w-full px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-xl text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
+            />
+          </div>
+
+          <div className="space-y-1.5 font-sans">
+            <label className="text-xs font-semibold text-neutral-300 block">Password / Kode Sandi</label>
+            <input
+              type="password"
+              required
+              id="admin-password-input"
+              placeholder="Masukkan password..."
+              value={adminPassword}
+              onChange={(e) => setAdminPassword(e.target.value)}
+              className="w-full px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-xl text-sm text-white placeholder-neutral-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
+            />
+          </div>
+
+          <button
+            type="submit"
+            id="admin-login-submit-btn"
+            disabled={isSubmittingLogin}
+            className="w-full py-3 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 font-bold text-sm text-white rounded-xl shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer mt-2 disabled:opacity-50"
+          >
+            {isSubmittingLogin ? (
+              <RefreshCw className="w-4 h-4 animate-spin" />
+            ) : (
+              <KeyRound className="w-4 h-4" />
+            )}
+            <span>{isSubmittingLogin ? "Memverifikasi..." : "Masuk Panel Administrator"}</span>
+          </button>
+        </form>
+
+        <div className="mt-8 pt-6 border-t border-neutral-800 text-center">
+          <div className="p-4 bg-emerald-950/20 border border-emerald-900/30 rounded-2xl inline-block text-left w-full">
+            <span className="block text-[10px] tracking-widest font-mono uppercase text-emerald-500 font-bold mb-1">
+              Petunjuk Akses Penilai & QA
+            </span>
+            <p className="text-xs text-neutral-400 leading-relaxed">
+              Untuk log-in segera dan meninjau seluruh fitur penuh pengeditan SEO, gunakan detail akun demo berikut:
+            </p>
+            <div className="bg-neutral-950/80 p-2.5 rounded-xl border border-neutral-900 grid grid-cols-2 gap-3 mt-2.5 text-xs font-mono">
+              <div>
+                <span className="text-neutral-500 block text-[9px] uppercase">Username</span>
+                <span className="text-amber-400 font-bold">admin</span>
+              </div>
+              <div>
+                <span className="text-neutral-500 block text-[9px] uppercase">Password</span>
+                <span className="text-amber-400 font-bold">admin123</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-neutral-900 border border-emerald-800/40 rounded-3xl overflow-hidden shadow-2xl text-white">
       
@@ -344,11 +478,21 @@ export default function AdminCMS({
         <div className="flex items-center gap-2">
           <button
             onClick={syncAllData}
+            id="sync-live-db-btn"
             disabled={loading}
             className="px-4 py-2 bg-emerald-800/80 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl transition-all border border-emerald-600/30 flex items-center gap-2"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin" : ""}`} />
             <span>Sync Live DB</span>
+          </button>
+          
+          <button
+            onClick={handleLogout}
+            id="admin-logout-btn"
+            className="px-4 py-2 bg-red-900/30 hover:bg-red-900/50 text-red-300 font-bold text-xs rounded-xl transition-all border border-red-900/40 flex items-center gap-2"
+          >
+            <LogOut className="w-3.5 h-3.5" />
+            <span>Keluar Admin</span>
           </button>
         </div>
       </div>
@@ -595,7 +739,7 @@ export default function AdminCMS({
                   departureDate: "",
                   facilities: ["Tiket PP", "Visa resmi Kemenag", "Hotel Bintang 4", "Air Zam-zam 5L"],
                   description: "",
-                  imageUrl: "https://images.unsplash.com/photo-1591604021695-0c69b7c05981?auto=format",
+                  imageUrl: "/src/assets/images/pilgrims_kaaba_1780615470405.png",
                   active: true
                 })}
                 className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-emerald-950 font-bold text-xs rounded-xl flex items-center gap-1.5"
@@ -913,7 +1057,7 @@ export default function AdminCMS({
                             alt="Cover preview" 
                             className="w-12 h-10 object-cover rounded-lg border border-neutral-850 shrink-0 bg-neutral-900"
                             onError={(e) => {
-                              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&q=80&w=600';
+                              (e.target as HTMLImageElement).src = '/src/assets/images/pilgrims_group_1780615485518.png';
                             }}
                           />
                         )}
@@ -922,24 +1066,24 @@ export default function AdminCMS({
                         <span>Pilihan Preset Populer:</span>
                         <button 
                           type="button" 
-                          onClick={() => setEditingBlog({ ...editingBlog, imageUrl: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&q=80&w=600" })}
+                          onClick={() => setEditingBlog({ ...editingBlog, imageUrl: "/src/assets/images/pilgrims_group_1780615485518.png" })}
+                          className="text-amber-400 underline hover:text-amber-300 pointer-events-auto"
+                        >
+                          Rombongan Ka'bah
+                        </button>
+                        <button 
+                          type="button" 
+                          onClick={() => setEditingBlog({ ...editingBlog, imageUrl: "/src/assets/images/pilgrims_kaaba_1780615470405.png" })}
                           className="text-amber-400 underline hover:text-amber-300 pointer-events-auto"
                         >
                           Ka'bah Makkah
                         </button>
                         <button 
                           type="button" 
-                          onClick={() => setEditingBlog({ ...editingBlog, imageUrl: "https://images.unsplash.com/photo-1591604021695-0c69b7c05981?auto=format&fit=crop&q=80&w=600" })}
+                          onClick={() => setEditingBlog({ ...editingBlog, imageUrl: "/src/assets/images/pilgrims_couple_1780615457585.png" })}
                           className="text-amber-400 underline hover:text-amber-300 pointer-events-auto"
                         >
-                          Masjid Nabawi Madinah
-                        </button>
-                        <button 
-                          type="button" 
-                          onClick={() => setEditingBlog({ ...editingBlog, imageUrl: "https://images.unsplash.com/photo-1542856391-010fb87dcfed?auto=format&fit=crop&q=80&w=600" })}
-                          className="text-amber-400 underline hover:text-amber-300 pointer-events-auto"
-                        >
-                          Kubah Indah
+                          Pasangan Ziyarah
                         </button>
                         <button 
                           type="button" 

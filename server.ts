@@ -57,6 +57,16 @@ function getGeminiClient(): GoogleGenAI | null {
 
 // =================== API ENDPOINTS ===================
 
+// Admin Authentication
+app.post("/api/admin/login", (req, res) => {
+  const { username, password } = req.body;
+  if (username === "admin" && password === "admin123") {
+    res.json({ success: true, token: "session_token_" + Date.now() });
+  } else {
+    res.status(401).json({ error: "Username atau Password salah!" });
+  }
+});
+
 // Live & Up-to-date Packages
 app.get("/api/packages", (req, res) => {
   res.json(packagesDb);

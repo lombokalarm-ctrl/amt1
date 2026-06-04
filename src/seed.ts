@@ -23,7 +23,7 @@ export const initialPackages: UmrahPackage[] = [
       "Manasik Umroh Intensif di Hotel Mataram"
     ],
     description: "Paket Umroh Premium Amantubillahi dirancang khusus bagi jamaah asal Lombok yang mengutamakan kenyamanan maksimal. Jarak hotel yang sangat dekat dari Masjidil Haram (<100m) memudahkan jamaah lansia maupun keluarga untuk melaksanakan shalat fardhu dan ibadah sunnah 24 jam dengan nyaman.",
-    imageUrl: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&q=80&w=1200", // Taj Al Safwah / Kaaba view representation
+    imageUrl: "/src/assets/images/pilgrims_kaaba_1780615470405.png", // Taj Al Safwah / Kaaba view representation
     active: true
   },
   {
@@ -47,7 +47,7 @@ export const initialPackages: UmrahPackage[] = [
       "Air Zam-Zam 5 Liter"
     ],
     description: "Paket terpopuler untuk masyarakat Lombok Timur, Lombok Tengah, dan Barat. Menyajikan perpaduan sempurna antara harga hemat terjangkau dan fasilitas berkelas berbintang empat. Menawarkan pengalaman ibadah yang tenang, teratur, dan penuh kekeluargaan.",
-    imageUrl: "https://images.unsplash.com/photo-1591604021695-0c69b7c05981?auto=format&fit=crop&q=80&w=1200", // Medina Mosque representation
+    imageUrl: "/src/assets/images/pilgrims_couple_1780615457585.png", // Medina Mosque representation
     active: true
   },
   {
@@ -70,7 +70,7 @@ export const initialPackages: UmrahPackage[] = [
       "Air Zam-Zam 5 Liter"
     ],
     description: "Sangat direkomendasikan untuk Anda yang mencari travel umroh lombok termurah tanpa mengurangi keabsahan ibadah. Didampingi tour leader berpengalaman asal Mataram yang ramah dan siap membantu kebutuhan pribadi jamaah kapan pun.",
-    imageUrl: "https://images.unsplash.com/photo-1542856391-010fb87dcfed?auto=format&fit=crop&q=80&w=1200", // Kaaba representation
+    imageUrl: "/src/assets/images/pilgrims_group_1780615485518.png", // Kaaba representation
     active: true
   }
 ];
@@ -85,7 +85,7 @@ export const initialBlogs: BlogPost[] = [
     views: 342,
     readTimeMin: 6,
     tags: ["Travel Umroh Lombok", "Mataram", "Lombok Barat"],
-    imageUrl: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&q=80&w=600",
+    imageUrl: "/src/assets/images/pilgrims_airport_1780615443945.png",
     seoFocusKeyword: "travel umroh lombok",
     seoMetaTitle: "Travel Umroh Lombok Terpercaya - Amantubillahi Tour Mataram",
     seoMetaDesc: "Mencari travel umroh lombok terpercaya di Mataram dan Lombok Barat? Dapatkan panduan lengkap biaya, syarat pendaftaran, dan rincian hotel bintang Amantubillahi.",
@@ -124,7 +124,7 @@ Hubungi kantor pelayanan terdekat kami di Mataram atau klik tombol WhatsApp di p
     views: 289,
     readTimeMin: 5,
     tags: ["Umrah Lombok", "Praya", "Lombok Tengah"],
-    imageUrl: "https://images.unsplash.com/photo-1591604021695-0c69b7c05981?auto=format&fit=crop&q=80&w=600",
+    imageUrl: "/src/assets/images/pilgrims_kaaba_1780615470405.png",
     seoFocusKeyword: "umrah lombok",
     seoMetaTitle: "Biaya Paket Umrah Lombok Terbaru 2026 - Amantubillahi Praya",
     seoMetaDesc: "Info jadwal keberangkatan dan biaya paket umrah lombok terbaru untuk warga Praya, Lombok Tengah. Hubungi travel umrah terdekat berizin resmi Kemenag.",
@@ -164,7 +164,7 @@ Segera daftarkan diri Anda dan keluarga untuk mengamankan seat penerbangan umrah
     views: 412,
     readTimeMin: 7,
     tags: ["Travel Umroh Terdekat", "Lombok Timur", "Selong", "Masbagik"],
-    imageUrl: "https://images.unsplash.com/photo-1542856391-010fb87dcfed?auto=format&fit=crop&q=80&w=600",
+    imageUrl: "/src/assets/images/pilgrims_group_1780615485518.png",
     seoFocusKeyword: "travel umroh terdekat",
     seoMetaTitle: "Travel Umroh Terdekat di Lombok Timur - Selong & Masbagik",
     seoMetaDesc: "Cari travel umroh terdekat di Lombok Timur? Temukan Amantubillahi Tour di dekat Selong, Masbagik, Aikmel. Dapatkan layanan amanah resmi Kemenag.",
@@ -203,7 +203,7 @@ Dapatkan informasi terlengkap mengenai paket keberangkatan musim ini dengan meng
     views: 198,
     readTimeMin: 5,
     tags: ["Travel Umrah Terpercaya", "Sumbawa", "Sumbawa Barat", "Dompu"],
-    imageUrl: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&q=80&w=600",
+    imageUrl: "/src/assets/images/man_ihram_pray_1780615496601.png",
     seoFocusKeyword: "travel umrah terpercaya",
     seoMetaTitle: "Travel Umrah Terpercaya Sumbawa, KSB & Dompu - Amantubillahi",
     seoMetaDesc: "Rekomendasi travel umrah terpercaya pendaftaran wilayah Sumbawa, Sumbawa Barat, Dompu dengan keberangkatan via Lombok. Simak bimbingan umroh syar'i Amantubillahi.",
@@ -242,7 +242,7 @@ Hubungi hotline kami atau kirimkan form pemesanan booking online Anda untuk penj
     views: 167,
     readTimeMin: 4,
     tags: ["Umrah Lombok", "Bima", "Kota Bima"],
-    imageUrl: "https://images.unsplash.com/photo-1604999333679-b86d54738315?auto=format&fit=crop&q=80&w=600",
+    imageUrl: "/src/assets/images/pilgrims_couple_1780615457585.png",
     seoFocusKeyword: "travel umrah terdekat",
     seoMetaTitle: "Pendaftaran Travel Umrah Terdekat di Bima NTB | Amantubillahi",
     seoMetaDesc: "Daftar Umroh Lombok kini lebih praktis untuk jamaah Kota Bima & Kabupaten Bima. Amantubillahi Tour travel umrah terdekat yang amanah resmi Kemenag.",
@@ -278,8 +278,8 @@ export const initialHeader: HeaderConfig = {
   logoText: "Amantubillahi",
   logoSub: "Tour & Travel Umroh Lombok",
   tagline: "Melayani dengan Hati, Membimbing sesuai Sunnah Rasulullah",
-  phone: "6281917711234",
-  phoneDisplay: "+62 819-1771-1234",
+  phone: "6281907087999",
+  phoneDisplay: "+62 819-0708-7999",
   menus: [
     { label: "Beranda", href: "#" },
     { label: "Paket Umrah", href: "#paket" },
@@ -293,12 +293,12 @@ export const initialHeader: HeaderConfig = {
 export const initialFooter: FooterConfig = {
   aboutText: "Amantubillahi (amantubillahi.com) adalah agen travel umroh berizin resmi dan terpercaya di Lombok, Nusa Tenggara Barat. Kami melayani keberangkatan jamaah umrah dari seluruh wilayah NTB dengan komitmen pelayanan prima, akomodasi berbintang yang dekat dengan masjid, dan pendampingan ibadah murni sesuai sunnah.",
   address: "Jl. Langko No. 45, Ampenan, Kota Mataram, Nusa Tenggara Barat 83114 (Sebelah Barat Kantor Gubernur NTB)",
-  phone: "+62 819-1771-1234",
+  phone: "+62 819-0708-7999",
   email: "info@amantubillahi.com",
   facebookUrl: "https://facebook.com/amantubillahi.umrohlombok",
   instagramUrl: "https://instagram.com/amantubillahi.umrohlombok",
   youtubeUrl: "https://youtube.com/amantubillahi.umrohlombok",
-  copyrightText: "© 2026 amantubillahi.com. All Rights Reserved. Izin Umroh Kemenag No: U.312/2021 | Travel Umroh Lombok Terpercaya."
+  copyrightText: "© 2026 amantubillahi.com. All Rights Reserved. Izin Umroh Kemenag No: 08022200332870003 | Travel Umroh Lombok Terpercaya."
 };
 
 export const initialStats: StatsData = {

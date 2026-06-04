@@ -201,7 +201,7 @@ export default function App() {
                 <ShieldCheck className="w-8 h-8 text-amber-400 shrink-0" />
                 <div className="text-left">
                   <span className="block font-bold text-sm tracking-tight text-white uppercase sm:text-xs">Berizin Kemenag RI</span>
-                  <p className="text-[11px] leading-tight text-emerald-200/60">Izin PPIU No. U.312/2021 Amanah & Sah Mulia</p>
+                  <p className="text-[11px] leading-tight text-emerald-200/60">Izin PPIU No. 08022200332870003 Amanah & Sah Mulia</p>
                 </div>
               </div>
               

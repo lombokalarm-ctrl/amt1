@@ -7,7 +7,7 @@ export default function FAQ() {
   const faqs = [
     {
       q: "Apakah Amantubillahi memiliki izin resmi PPIU Kemenag?",
-      a: "Ya, Amantubillahi memiliki Izin Resmi Penyelenggara Perjalanan Ibadah Umrah (PPIU) dari Kementerian Agama RI dengan No. U.312/2021. Alamat kantor pusat kami sangat jelas berlokasi di pusat Kota Mataram sebelah barat Kantor Gubernur NTB, sehingga jamaah dari Selong, Praya, Gerung, maupun Sumbawa dapat dengan mudah memverifikasi keaslian izin kami langsung."
+      a: "Ya, Amantubillahi memiliki Izin Resmi Penyelenggara Perjalanan Ibadah Umrah (PPIU) dari Kementerian Agama RI dengan No. 08022200332870003. Alamat kantor pusat kami sangat jelas berlokasi di pusat Kota Mataram sebelah barat Kantor Gubernur NTB, sehingga jamaah dari Selong, Praya, Gerung, maupun Sumbawa dapat dengan mudah memverifikasi keaslian izin kami langsung."
     },
     {
       q: "Bagaimana rute penerbangan umroh dari bandara Lombok (LOP)?",
@@ -86,7 +86,7 @@ export default function FAQ() {
             
             <div className="md:col-span-4 text-left md:text-right">
               <a
-                href="https://wa.me/6281917711234?text=Assalamu%27alaikum%20saya%20butuh%20tanya-tanya%20detail%20syarat%20paspor%20dan%20visa%20umroh."
+                href="https://wa.me/6281907087999?text=Assalamu%27alaikum%20saya%20butuh%20tanya-tanya%20detail%20syarat%20paspor%20dan%20visa%20umroh."
                 target="_blank"
                 rel="noreferrer"
                 className="inline-block px-6 py-3 bg-amber-500 hover:bg-amber-400 text-emerald-950 font-bold rounded-xl text-xs sm:text-sm shadow-md transition-colors w-full md:w-auto text-center"

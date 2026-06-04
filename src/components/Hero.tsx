@@ -8,7 +8,7 @@ interface HeroProps {
 
 export default function Hero({ onScrollToSection, phone }: HeroProps) {
   return (
-    <section className="relative overflow-hidden text-white min-h-[580px] lg:min-h-[640px] flex items-center justify-center py-20 bg-cover bg-center" style={{ backgroundImage: "linear-gradient(rgba(6, 78, 59, 0.90), rgba(6, 78, 59, 0.90)), url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&q=80&w=1200')" }}>
+    <section className="relative overflow-hidden text-white min-h-[580px] lg:min-h-[640px] flex items-center justify-center py-20 bg-cover bg-center" style={{ backgroundImage: "linear-gradient(rgba(6, 78, 59, 0.90), rgba(6, 78, 59, 0.90)), url('/src/assets/images/pilgrims_group_1780615485518.png')" }}>
       
       {/* Absolute Decorative Geometric Shapes */}
       <div className="absolute inset-0 bg-black/10 z-0"></div>
@@ -25,7 +25,7 @@ export default function Hero({ onScrollToSection, phone }: HeroProps) {
             {/* Tagline / Micro Trust Banner */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-950/60 border border-emerald-700/50 rounded-full text-xs text-emerald-300 font-semibold shadow-inner">
               <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0" />
-              <span>Izin Resmi Kemenag No. U.312/2021 | Travel Umroh Lombok Terpercaya</span>
+              <span>Izin Resmi Kemenag No. 08022200332870003 | Travel Umroh Lombok Terpercaya</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight leading-tight italic">
@@ -36,7 +36,7 @@ export default function Hero({ onScrollToSection, phone }: HeroProps) {
             </h1>
 
             <p className="text-base sm:text-lg text-emerald-50 leading-relaxed opacity-90">
-              Penyenanggar Umroh Resmi & Terpercaya di Nusa Tenggara Barat. Melayani Jamaah dengan bimbingan murni sesuai Sunnah langsung dari berbagai wilayah Lombok & Sumbawa.
+              Penyelenggara Umroh Resmi & Terpercaya di Nusa Tenggara Barat. Melayani Jamaah dengan bimbingan murni sesuai Sunnah langsung dari berbagai wilayah Lombok & Sumbawa.
             </p>
 
             {/* CTA action buttons */}
@@ -98,7 +98,7 @@ export default function Hero({ onScrollToSection, phone }: HeroProps) {
                     </div>
                     <div>
                       <h4 className="font-bold text-white text-sm">Pasti Izin & Legalitas</h4>
-                      <p className="text-xs text-emerald-200/70 leading-relaxed">Izin PPIU No: U.312/2021 resmi Kementerian Agama RI.</p>
+                      <p className="text-xs text-emerald-200/70 leading-relaxed">Izin PPIU No: 08022200332870003 resmi Kementerian Agama RI.</p>
                     </div>
                   </li>
 

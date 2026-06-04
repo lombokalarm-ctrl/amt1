@@ -91,7 +91,7 @@ export default function Footer({ config }: FooterProps) {
             <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-emerald-900/40">
               <div className="flex items-center gap-2 bg-emerald-950/40 text-emerald-300 py-1.5 px-3 rounded-lg text-xs border border-emerald-800/40">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>Travel Berizin Kemenag RI No. U.312/2021</span>
+                <span>Travel Berizin Kemenag RI No. 08022200332870003</span>
               </div>
               <div className="flex items-center gap-2 bg-emerald-950/40 text-emerald-300 py-1.5 px-3 rounded-lg text-xs border border-emerald-800/40">
                 <Award className="w-4 h-4 text-emerald-400" />
@@ -105,7 +105,7 @@ export default function Footer({ config }: FooterProps) {
         {/* Corporate Legal & Bottom */}
         <div className="mt-16 pt-8 border-t border-emerald-900/60 text-center text-xs text-neutral-500 space-y-4">
           <p>
-            Fokus Keyword Strategi: <strong className="text-neutral-400">umroh lombok, travel umroh lombok, umrah lombok, travel umrah terpercaya, travel umrah terdekat</strong>.
+           {/*Fokus Keyword Strategi:*/} <strong className="text-neutral-400">umroh lombok, travel umroh lombok, umrah lombok, travel umrah terpercaya, travel umrah terdekat</strong>.
           </p>
           <p>
             {config.copyrightText}
