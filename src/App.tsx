@@ -81,7 +81,7 @@ export default function App() {
         });
 
       } catch (err) {
-        console.warn("Express APIs are booting or loading from offline mock seeds...", err);
+        console.warn("Express APIs are booting or loading from offline local seeds...", err);
       }
     }
     initFetch();

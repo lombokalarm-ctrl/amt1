@@ -13,7 +13,7 @@ export default function Hero({ onScrollToSection, phone }: HeroProps) {
       {/* Absolute Decorative Geometric Shapes */}
       <div className="absolute inset-0 bg-black/10 z-0"></div>
       
-      {/* Islamic Dome Vector Silhouette Backplate Mock */}
+      {/* Islamic Dome Vector Silhouette Backplate ornament */}
       <div className="absolute bottom-0 right-0 left-0 h-40 bg-gradient-to-t from-emerald-950/40 to-transparent pointer-events-none z-10"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">

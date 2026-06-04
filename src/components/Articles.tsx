@@ -91,30 +91,43 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
               <div 
                 key={post.id}
                 onClick={() => handleOpenArticle(post)}
-                className="bg-neutral-950 hover:bg-neutral-950/80 rounded-2xl border border-emerald-950/80 overflow-hidden shadow-md hover:shadow-emerald-950/20 cursor-pointer flex flex-col justify-between hover:-translate-y-1 transition-all duration-300"
+                className="bg-neutral-950 hover:bg-neutral-950/80 rounded-2xl border border-emerald-950/80 overflow-hidden shadow-md hover:shadow-emerald-950/20 cursor-pointer flex flex-col justify-between hover:-translate-y-1 transition-all duration-300 group"
               >
-                
-                {/* Meta header ribbon */}
-                <div className="p-6 pb-2 space-y-4">
-                  <div className="flex items-center justify-between text-xs text-neutral-400">
-                    <div className="flex items-center gap-1 bg-emerald-900/50 text-emerald-300 px-2 py-0.5 rounded border border-emerald-800/40">
-                      <MapPin className="w-3.5 h-3.5" />
-                      <span>{post.city}</span>
+                <div>
+                  {post.imageUrl && (
+                    <div className="h-44 w-full overflow-hidden relative border-b border-emerald-950/40">
+                      <img 
+                        src={post.imageUrl} 
+                        alt={post.title} 
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        referrerPolicy="no-referrer"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 to-transparent opacity-40"></div>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Calendar className="w-3.5 h-3.5" />
-                      <span>{post.date}</span>
+                  )}
+                  
+                  {/* Meta header ribbon */}
+                  <div className="p-6 pb-2 space-y-4">
+                    <div className="flex items-center justify-between text-xs text-neutral-400">
+                      <div className="flex items-center gap-1 bg-emerald-900/50 text-emerald-300 px-2 py-0.5 rounded border border-emerald-800/40">
+                        <MapPin className="w-3.5 h-3.5" />
+                        <span>{post.city}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Calendar className="w-3.5 h-3.5" />
+                        <span>{post.date}</span>
+                      </div>
                     </div>
+
+                    <h3 className="font-serif font-bold text-lg sm:text-xl text-white hover:text-emerald-400 transition-colors line-clamp-3 leading-snug">
+                      {post.title}
+                    </h3>
                   </div>
 
-                  <h3 className="font-serif font-bold text-lg sm:text-xl text-white hover:text-emerald-400 transition-colors line-clamp-3 leading-snug">
-                    {post.title}
-                  </h3>
-                </div>
-
-                {/* Content body snippet */}
-                <div className="px-6 text-sm text-neutral-400 leading-relaxed line-clamp-4">
-                  {post.content.replace(/[#*`_]/g, "")}
+                  {/* Content body snippet */}
+                  <div className="px-6 text-sm text-neutral-400 leading-relaxed line-clamp-4">
+                    {post.content.replace(/[#*`_]/g, "")}
+                  </div>
                 </div>
 
                 {/* Actions footer */}
@@ -144,7 +157,14 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
             <div className="bg-neutral-900 border border-emerald-800/60 rounded-3xl max-w-3xl w-full max-h-[85vh] overflow-y-auto shadow-2xl relative">
               
               {/* Header image / ornament block */}
-              <div className="bg-gradient-to-r from-emerald-900 to-teal-900 p-8 text-white relative">
+              <div 
+                className="p-8 text-white relative min-h-[180px] flex flex-col justify-end bg-cover bg-center rounded-t-[22px]"
+                style={
+                  readingArticle.imageUrl 
+                    ? { backgroundImage: `linear-gradient(rgba(4, 47, 31, 0.8), rgba(4, 47, 31, 0.95)), url('${readingArticle.imageUrl}')` }
+                    : { backgroundImage: 'linear-gradient(to right, #064e3b, #0f766e)' }
+                }
+              >
                 <button
                   onClick={handleCloseArticle}
                   className="absolute top-4 right-4 p-2 bg-black/30 hover:bg-black/50 text-white rounded-full transition-colors"

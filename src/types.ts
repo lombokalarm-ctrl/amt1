@@ -35,6 +35,7 @@ export interface BlogPost {
     contentLengthOk: boolean;
     suggestions: string[];
   };
+  imageUrl?: string;
 }
 
 export interface HeaderConfig {

@@ -823,7 +823,8 @@ export default function AdminCMS({
                     seoMetaDesc: "",
                     city: "Mataram",
                     tags: ["Travel Umroh Lombok"],
-                    seoScore: 60
+                    seoScore: 60,
+                    imageUrl: ""
                   });
                   setSeoResult(null);
                 }}
@@ -894,6 +895,60 @@ export default function AdminCMS({
                         onChange={(e) => setEditingBlog({ ...editingBlog, title: e.target.value })}
                         className="w-full p-2.5 bg-neutral-900 border border-neutral-800 rounded-xl text-xs sm:text-sm"
                       />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold text-neutral-400 uppercase">URL Gambar Sampul Artikel</label>
+                      <div className="flex gap-3">
+                        <input
+                          type="text"
+                          value={editingBlog.imageUrl || ""}
+                          placeholder="https://images.unsplash.com/photo-..."
+                          onChange={(e) => setEditingBlog({ ...editingBlog, imageUrl: e.target.value })}
+                          className="w-full p-2.5 bg-neutral-900 border border-neutral-800 rounded-xl text-xs font-mono text-neutral-300"
+                        />
+                        {editingBlog.imageUrl && (
+                          <img 
+                            src={editingBlog.imageUrl} 
+                            alt="Cover preview" 
+                            className="w-12 h-10 object-cover rounded-lg border border-neutral-850 shrink-0 bg-neutral-900"
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&q=80&w=600';
+                            }}
+                          />
+                        )}
+                      </div>
+                      <div className="text-[10px] text-neutral-500 mt-1 flex flex-wrap gap-2">
+                        <span>Pilihan Preset Populer:</span>
+                        <button 
+                          type="button" 
+                          onClick={() => setEditingBlog({ ...editingBlog, imageUrl: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&q=80&w=600" })}
+                          className="text-amber-400 underline hover:text-amber-300 pointer-events-auto"
+                        >
+                          Ka'bah Makkah
+                        </button>
+                        <button 
+                          type="button" 
+                          onClick={() => setEditingBlog({ ...editingBlog, imageUrl: "https://images.unsplash.com/photo-1591604021695-0c69b7c05981?auto=format&fit=crop&q=80&w=600" })}
+                          className="text-amber-400 underline hover:text-amber-300 pointer-events-auto"
+                        >
+                          Masjid Nabawi Madinah
+                        </button>
+                        <button 
+                          type="button" 
+                          onClick={() => setEditingBlog({ ...editingBlog, imageUrl: "https://images.unsplash.com/photo-1542856391-010fb87dcfed?auto=format&fit=crop&q=80&w=600" })}
+                          className="text-amber-400 underline hover:text-amber-300 pointer-events-auto"
+                        >
+                          Kubah Indah
+                        </button>
+                        <button 
+                          type="button" 
+                          onClick={() => setEditingBlog({ ...editingBlog, imageUrl: "" })}
+                          className="text-rose-400 underline hover:text-rose-300 pointer-events-auto"
+                        >
+                          Hapus Gambar
+                        </button>
+                      </div>
                     </div>
 
                     <div className="space-y-1">

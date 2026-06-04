@@ -36,7 +36,7 @@ function getGeminiClient(): GoogleGenAI | null {
   if (aiClient) return aiClient;
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey || apiKey === "MY_GEMINI_API_KEY" || apiKey.trim() === "") {
-    console.warn("⚠️ GEMINI_API_KEY is not defined or is placeholder. AI features will fallback to dummy analysis.");
+    console.warn("⚠️ GEMINI_API_KEY is not defined or is placeholder. AI features will fallback to local SEO metrics analysis.");
     return null;
   }
   try {
