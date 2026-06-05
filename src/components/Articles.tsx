@@ -52,7 +52,7 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
         
         {/* Module Title */}
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-4">
-          <span className="text-amber-400 font-bold uppercase tracking-widest text-xs block">Optimalisasi Edukasi & SEO</span>
+          <span className="text-amber-400 font-bold uppercase tracking-widest text-xs block">Edukasi & Panduan Umrah</span>
           <h2 className="text-3xl font-serif font-bold text-white tracking-tight sm:text-4xl italic">
             Sajian Informasi Haji & Umroh NTB
           </h2>
@@ -211,57 +211,6 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
                     >
                       Chat WhatsApp
                     </a>
-                  </div>
-                </div>
-
-                {/* Yoast SEO Audit Panel (Educational/Impressive showcase) */}
-                <div className="bg-neutral-950 border border-neutral-800 p-6 rounded-2xl mt-8">
-                  <div className="flex items-center justify-between border-b border-neutral-800 pb-3 mb-3">
-                    <div className="flex items-center gap-2">
-                      <Sparkles className="w-5 h-5 text-amber-400" />
-                      <h4 className="font-bold text-sm text-neutral-200 uppercase tracking-wider font-mono">Panel Analisis SEO Yoast</h4>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs text-neutral-400">Skor SEO:</span>
-                      <span className={`px-2 py-0.5 rounded font-mono font-bold text-xs ${
-                        (readingArticle.seoScore || 80) >= 85 ? "bg-emerald-900/55 text-emerald-400" : "bg-amber-900/55 text-amber-300"
-                      }`}>
-                        {(readingArticle.seoScore || 80)} / 100
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="space-y-3 text-xs text-neutral-400">
-                    <div className="grid grid-cols-2 gap-2 text-left">
-                      <div>
-                        <strong>Kata Kunci Target Yoast:</strong> <code className="text-emerald-400 bg-emerald-950 px-1 py-0.5 rounded">{readingArticle.seoFocusKeyword || "umroh lombok"}</code>
-                      </div>
-                      <div>
-                        <strong>Panjang Judul Meta:</strong> <span className="text-neutral-300">Optimal (Memenuhi Standar)</span>
-                      </div>
-                    </div>
-
-                    <div className="space-y-1.5 pt-2">
-                      <span className="block font-semibold text-neutral-300">Faktor Evaluasi Hijau Yoast:</span>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
-                        <div className="flex items-center gap-1.5 text-neutral-400">
-                          <CheckCircle className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                          <span>Keyword di Paragraf 1 (Bagus)</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 text-neutral-400">
-                          <CheckCircle className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                          <span>Kepadatan Kata Kunci Ideal ({readingArticle.seoFeedback?.keywordDensity || "1.6"}%)</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 text-neutral-400">
-                          <CheckCircle className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                          <span>Meta Deskripsi Terkonfigurasi</span>
-                        </div>
-                        <div className="flex items-center gap-1.5 text-neutral-400">
-                          <CheckCircle className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                          <span>Readability & Sub-Header Memadai</span>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
 
