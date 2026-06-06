@@ -121,6 +121,20 @@ export default function Packages({ packages, onOpenBooking, onWhatsappClick }: P
                     </div>
                   </div>
 
+                  <div className="rounded-xl bg-emerald-50/70 p-3 text-xs text-emerald-900">
+                    <span className="block font-bold uppercase tracking-widest text-emerald-700">Panduan Sebelum Booking</span>
+                    <p className="mt-1 leading-relaxed">
+                      Pelajari dulu artikel{" "}
+                      <a
+                        href="/artikel/travel-umroh-lombok-mataram-barat"
+                        className="font-bold text-emerald-800 underline underline-offset-2 hover:text-emerald-950"
+                      >
+                        Travel Umroh Lombok Terpercaya
+                      </a>{" "}
+                      untuk membandingkan paket, legalitas, dan alur pendaftaran jamaah dari Lombok.
+                    </p>
+                  </div>
+
                 </div>
 
                 {/* Double CTA Buttons inside card */}

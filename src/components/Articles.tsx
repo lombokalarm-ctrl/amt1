@@ -247,9 +247,13 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredArticles.map((post) => (
-              <div 
+              <a
                 key={post.id}
-                onClick={() => handleOpenArticle(post)}
+                href={`/artikel/${post.slug}`}
+                onClick={(event) => {
+                  event.preventDefault();
+                  void handleOpenArticle(post);
+                }}
                 className="bg-neutral-950 hover:bg-neutral-950/80 rounded-2xl border border-emerald-950/80 overflow-hidden shadow-md hover:shadow-emerald-950/20 cursor-pointer flex flex-col justify-between hover:-translate-y-1 transition-all duration-300 group"
               >
                 <div>
@@ -305,7 +309,7 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
                   </span>
                 </div>
 
-              </div>
+              </a>
             ))}
           </div>
         )}

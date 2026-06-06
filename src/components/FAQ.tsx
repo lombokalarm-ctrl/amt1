@@ -1,31 +1,9 @@
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp, CheckCircle, Notebook } from "lucide-react";
+import { faqEntries } from "../content/faq";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const faqs = [
-    {
-      q: "Apakah Amantubillahi memiliki izin resmi PPIU Kemenag?",
-      a: "Ya, Amantubillahi memiliki Izin Resmi Penyelenggara Perjalanan Ibadah Umrah (PPIU) dari Kementerian Agama RI dengan No. 08022200332870003. Alamat kantor pusat kami sangat jelas berlokasi di pusat Kota Mataram sebelah barat Kantor Gubernur NTB, sehingga jamaah dari Selong, Praya, Gerung, maupun Sumbawa dapat dengan mudah memverifikasi keaslian izin kami langsung."
-    },
-    {
-      q: "Bagaimana rute penerbangan umroh dari bandara Lombok (LOP)?",
-      a: "Tergantung pilihan paket, kami menyediakan rute penerbangan langsung (direct-flight) Lombok ke Jeddah menggunakan sewaan maskapai seperti Lion Air Premium Premium, atau dengan transit minimal yang nyaman seperti Garuda Indonesia melalui Jakarta atau AirAsia melalui Kuala Lumpur menuju Madinah."
-    },
-    {
-      q: "Bagaimana cara melakukan pendaftaran umroh bagi warga di luar kota Mataram (seperti Selong, Bima, Sumbawa)?",
-      a: "Sangat mudah! Amantubillahi menyediakan layanan pendaftaran online (Booking Online melalui form di website ini), dilanjutkan dengan pengiriman dokumen fisik melalui kurir atau tim perwakilan koper lokal kami yang tersebar di Selong, Masbagik, Praya, Sumbawa Besar, dan Kota Bima yang siap mengambil berkas/koper langsung di kediaman Anda."
-    },
-    {
-      q: "Apakah biaya yang tertera di website sudah termasuk perlengkapan dan manasik?",
-      a: "Ya, seluruh biaya paket yang kami rilis di Amantubillahi bersifat All-In (sudah termasuk perlengkapan umroh seperti koper premium, kain ihram/mukena, tas selempang, buku doa, visa resmi, makan Fullboard Catering Nusantara, air zam-zam 5L, serta bimbingan manasik intensif 2x di NTB sebelum bertolak ke Saudi)."
-    },
-    {
-      q: "Apakah ada diskon atau paket khusus untuk pendaftaran rombongan keluarga?",
-      a: "Benar sekali. Kami menyediakan kebijakan diskon khusus atau penyesuaian kamar (Double / Triple room) bagi pendaftaran rombongan keluarga atau rombongan jamaah minimal 4 orang dari satu desa/kecamatan di Lombok. Konsultasikan rombongan Anda ke tim Admin representatif kami via WhatsApp!"
-    }
-  ];
 
   return (
     <section id="keunggulan" className="py-20 bg-white">
@@ -38,11 +16,14 @@ export default function FAQ() {
             Pertanyaan Yang Sering Diajukan (FAQ)
           </h2>
           <div className="w-12 h-0.5 bg-emerald-600 mx-auto"></div>
+          <p className="mx-auto max-w-2xl text-sm leading-relaxed text-gray-600">
+            FAQ ini membantu calon jamaah yang mencari travel umroh Lombok memahami legalitas, rute penerbangan, biaya all-in, dan proses pendaftaran sebelum melanjutkan ke halaman booking.
+          </p>
         </div>
 
         {/* FAQ Items */}
         <div className="space-y-4">
-          {faqs.map((faq, idx) => {
+          {faqEntries.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
               <div 

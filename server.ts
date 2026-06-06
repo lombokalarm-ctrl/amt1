@@ -6,15 +6,16 @@ import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, Type } from "@google/genai";
 import dotenv from "dotenv";
 
-import { 
-  initialPackages, 
-  initialBlogs, 
-  initialHeader, 
-  initialFooter, 
-  initialStats, 
-  initialReports 
+import {
+  initialPackages,
+  initialBlogs,
+  initialHeader,
+  initialFooter,
+  initialStats,
+  initialReports,
 } from "./src/seed";
 import { UmrahPackage, BlogPost, HeaderConfig, FooterConfig, Booking, StatsData, EmailReport } from "./src/types";
+import { faqEntries } from "./src/content/faq";
 
 dotenv.config();
 
@@ -360,6 +361,109 @@ function buildPageMetadata(req: express.Request): PageMetadata {
   };
 }
 
+function buildStructuredData(req: express.Request) {
+  const baseUrl = getBaseUrl(req);
+  const articleSlug = getArticleSlugFromRequest(req);
+  const organizationName = "Amantubillahi Tour";
+  const logoUrl = getDefaultImageUrl(baseUrl);
+
+  if (!articleSlug) {
+    return [
+      {
+        "@context": "https://schema.org",
+        "@type": "TravelAgency",
+        name: organizationName,
+        url: `${baseUrl}/`,
+        description: DEFAULT_PAGE_DESCRIPTION,
+        areaServed: [
+          "Mataram",
+          "Lombok Barat",
+          "Lombok Tengah",
+          "Lombok Timur",
+          "Sumbawa",
+          "Bima",
+          "Dompu",
+        ],
+        keywords: [
+          "travel umroh lombok",
+          "travel umroh lombok terpercaya",
+          "paket umroh lombok",
+          "umroh lombok",
+        ],
+        telephone: headerDb.phoneDisplay || headerDb.phone,
+        email: footerDb.email,
+        image: logoUrl,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: footerDb.address,
+          addressLocality: "Mataram",
+          addressRegion: "Nusa Tenggara Barat",
+          addressCountry: "ID",
+        },
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqEntries.map((faq) => ({
+          "@type": "Question",
+          name: faq.q,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.a,
+          },
+        })),
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: organizationName,
+        url: `${baseUrl}/`,
+        inLanguage: "id-ID",
+        potentialAction: {
+          "@type": "SearchAction",
+          target: `${baseUrl}/artikel/{search_term_string}`,
+          "query-input": "required name=search_term_string",
+        },
+      },
+    ];
+  }
+
+  const matchedBlog = blogsDb.find((blog) => blog.slug === articleSlug);
+  if (!matchedBlog) {
+    return [];
+  }
+
+  const canonicalUrl = `${baseUrl}/artikel/${articleSlug}`;
+  const description = matchedBlog.seoMetaDesc?.trim() || toPlainText(matchedBlog.content).slice(0, 160);
+  const imageUrl = toAbsolutePublicUrl(baseUrl, matchedBlog.imageUrl) || logoUrl;
+
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: matchedBlog.seoMetaTitle?.trim() || matchedBlog.title,
+      description,
+      image: imageUrl,
+      mainEntityOfPage: canonicalUrl,
+      datePublished: matchedBlog.date,
+      dateModified: matchedBlog.date,
+      keywords: [matchedBlog.seoFocusKeyword, ...(matchedBlog.tags || [])].filter(Boolean),
+      author: {
+        "@type": "Organization",
+        name: organizationName,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: organizationName,
+        logo: {
+          "@type": "ImageObject",
+          url: logoUrl,
+        },
+      },
+    },
+  ];
+}
+
 function injectPageMetadata(template: string, pageMeta: PageMetadata) {
   const replacements: Record<string, string> = {
     "__PAGE_TITLE__": pageMeta.title,
@@ -375,9 +479,21 @@ function injectPageMetadata(template: string, pageMeta: PageMetadata) {
     "__TWITTER_IMAGE__": pageMeta.twitterImage,
   };
 
-  return Object.entries(replacements).reduce((html, [token, value]) => {
+  const htmlWithMeta = Object.entries(replacements).reduce((html, [token, value]) => {
     return html.split(token).join(escapeHtml(value));
   }, template);
+
+  return htmlWithMeta;
+}
+
+function injectStructuredData(template: string, req: express.Request) {
+  const structuredData = buildStructuredData(req);
+  if (!structuredData.length) {
+    return template;
+  }
+
+  const scriptTag = `  <script type="application/ld+json">${JSON.stringify(structuredData).replace(/</g, "\\u003c")}</script>\n</head>`;
+  return template.replace("</head>", scriptTag);
 }
 
 function getClientIdentifier(req: express.Request) {
@@ -1458,7 +1574,8 @@ async function startServer() {
         const templatePath = path.join(process.cwd(), "index.html");
         const template = fs.readFileSync(templatePath, "utf8");
         const pageMeta = buildPageMetadata(req);
-        const html = await vite.transformIndexHtml(req.originalUrl, injectPageMetadata(template, pageMeta));
+        const htmlTemplate = injectStructuredData(injectPageMetadata(template, pageMeta), req);
+        const html = await vite.transformIndexHtml(req.originalUrl, htmlTemplate);
         res.status(pageMeta.statusCode).type("html").send(html);
       } catch (error) {
         next(error);
@@ -1473,7 +1590,7 @@ async function startServer() {
     app.use(express.static(distPath, { index: false }));
     app.get("*", (req, res) => {
       const pageMeta = buildPageMetadata(req);
-      const html = injectPageMetadata(distIndexHtml, pageMeta);
+      const html = injectStructuredData(injectPageMetadata(distIndexHtml, pageMeta), req);
       res.status(pageMeta.statusCode).type("html").send(html);
     });
   }

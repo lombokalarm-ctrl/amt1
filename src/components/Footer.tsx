@@ -105,7 +105,7 @@ export default function Footer({ config }: FooterProps) {
         {/* Corporate Legal & Bottom */}
         <div className="mt-16 pt-8 border-t border-emerald-900/60 text-center text-xs text-neutral-500 space-y-4">
           <p>
-           {/*Fokus Keyword Strategi:*/} <strong className="text-neutral-400">umroh lombok, travel umroh lombok, umrah lombok, travel umrah terpercaya, travel umrah terdekat</strong>.
+            Amantubillahi melayani kebutuhan <strong className="text-neutral-400">travel umroh Lombok</strong>, paket umroh Lombok, konsultasi keberangkatan, dan pendaftaran jamaah dari seluruh wilayah Nusa Tenggara Barat.
           </p>
           <p>
             {config.copyrightText}

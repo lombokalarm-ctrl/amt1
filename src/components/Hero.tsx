@@ -26,18 +26,21 @@ export default function Hero({ onScrollToSection, phone }: HeroProps) {
             {/* Tagline / Micro Trust Banner */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-emerald-950/60 border border-emerald-700/50 rounded-full text-xs text-emerald-300 font-semibold shadow-inner">
               <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0" />
-              <span>Izin Resmi Kemenag No. 08022200332870003 | Travel Umroh Lombok Terpercaya</span>
+              <span>Izin Resmi Kemenag No. 08022200332870003 | Agen Travel Umroh Lombok Resmi</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight leading-tight italic">
-              Wujudkan Niat Suci ke Baitullah <br />
+              Travel Umroh Lombok Terpercaya <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400 font-sans font-extrabold not-italic">
                 Bersama Amantubillahi
               </span>
             </h1>
 
             <p className="text-base sm:text-lg text-emerald-50 leading-relaxed opacity-90">
-              Penyelenggara Umroh Resmi & Terpercaya di Nusa Tenggara Barat. Melayani Jamaah dengan bimbingan murni sesuai Sunnah langsung dari berbagai wilayah Lombok & Sumbawa.
+              Amantubillahi adalah travel umroh Lombok terpercaya yang melayani jamaah dari Mataram, Lombok Barat, Lombok Tengah, Lombok Timur, Sumbawa, hingga Bima dengan paket keberangkatan resmi, booking online mudah, dan bimbingan ibadah sesuai Sunnah.
+            </p>
+            <p className="text-sm sm:text-base text-emerald-100/80 leading-relaxed max-w-3xl">
+              Cari paket umroh Lombok yang amanah, jadwal jelas, hotel strategis, dan pendampingan mutawwif berpengalaman? Tim kami membantu calon jamaah memilih paket yang sesuai kebutuhan keluarga, rombongan, maupun keberangkatan personal dari seluruh NTB.
             </p>
 
             {/* CTA action buttons */}

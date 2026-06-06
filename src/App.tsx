@@ -247,6 +247,50 @@ export default function App() {
             }} 
           />
 
+          <section className="bg-white border-b border-emerald-100">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+              <div className="max-w-4xl space-y-4">
+                <span className="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold uppercase tracking-widest text-emerald-700">
+                  Travel Umroh Lombok
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-emerald-950 italic">
+                  Solusi Travel Umroh Lombok untuk Jamaah Mataram, Lombok Barat, Praya, Selong, Sumbawa, dan Bima
+                </h2>
+                <p className="text-sm sm:text-base leading-relaxed text-neutral-700">
+                  Amantubillahi menghadirkan layanan travel umroh Lombok yang fokus pada legalitas, transparansi biaya, jadwal keberangkatan yang jelas, dan pendampingan ibadah sejak manasik hingga kepulangan. Halaman ini dirancang untuk membantu calon jamaah menemukan paket umroh Lombok terpercaya sekaligus informasi pendaftaran dari seluruh wilayah NTB.
+                </p>
+                <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap">
+                  <a
+                    href="/artikel/travel-umroh-lombok-mataram-barat"
+                    className="inline-flex items-center justify-center rounded-xl bg-emerald-700 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-emerald-800"
+                  >
+                    Baca Panduan Travel Umroh Lombok
+                  </a>
+                  <a
+                    href="#paket"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      navigateToSection("#paket");
+                    }}
+                    className="inline-flex items-center justify-center rounded-xl border border-emerald-200 bg-white px-5 py-3 text-sm font-bold text-emerald-800 transition-colors hover:bg-emerald-50"
+                  >
+                    Cek Paket & Jadwal
+                  </a>
+                  <a
+                    href="#booking"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      navigateToSection("#booking");
+                    }}
+                    className="inline-flex items-center justify-center rounded-xl border border-amber-200 bg-amber-50 px-5 py-3 text-sm font-bold text-amber-900 transition-colors hover:bg-amber-100"
+                  >
+                    Booking Konsultasi Jamaah
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* 2. Micro Trust Banners */}
           <section className="bg-emerald-950 py-8 border-y border-emerald-800 text-center text-emerald-100">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 divide-y md:divide-y-0 md:divide-x divide-emerald-800/60">
