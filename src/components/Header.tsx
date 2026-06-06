@@ -8,9 +8,10 @@ interface HeaderProps {
   onOpenCMS: () => void;
   activeSection: string;
   isCMSActive: boolean;
+  showCMSAccess: boolean;
 }
 
-export default function Header({ config, onNavigate, onOpenCMS, activeSection, isCMSActive }: HeaderProps) {
+export default function Header({ config, onNavigate, onOpenCMS, activeSection, isCMSActive, showCMSAccess }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleMenuClick = (href: string) => {
@@ -69,16 +70,18 @@ export default function Header({ config, onNavigate, onOpenCMS, activeSection, i
               );
             })}
             
-            <button
-              onClick={onOpenCMS}
-              className={`ml-2 px-4 py-2 rounded-lg text-sm font-bold border transition-all ${
-                isCMSActive
-                  ? "bg-amber-500 text-emerald-900 border-amber-400 shadow-md"
-                  : "border-amber-500/50 text-amber-400 hover:bg-amber-500 hover:text-emerald-950"
-              }`}
-            >
-              CMS Admin
-            </button>
+            {showCMSAccess && (
+              <button
+                onClick={onOpenCMS}
+                className={`ml-2 px-4 py-2 rounded-lg text-sm font-bold border transition-all ${
+                  isCMSActive
+                    ? "bg-amber-500 text-emerald-900 border-amber-400 shadow-md"
+                    : "border-amber-500/50 text-amber-400 hover:bg-amber-500 hover:text-emerald-950"
+                }`}
+              >
+                CMS Admin
+              </button>
+            )}
           </nav>
 
           {/* WhatsApp Hotline Action */}
@@ -95,16 +98,18 @@ export default function Header({ config, onNavigate, onOpenCMS, activeSection, i
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center gap-3">
-            <button
-              onClick={onOpenCMS}
-              className={`px-3 py-1.5 text-xs font-semibold rounded-lg border ${
-                isCMSActive
-                  ? "bg-amber-500 text-emerald-950 border-amber-400"
-                  : "border-amber-500/50 text-amber-300 hover:bg-amber-800"
-              }`}
-            >
-              CMS
-            </button>
+            {showCMSAccess && (
+              <button
+                onClick={onOpenCMS}
+                className={`px-3 py-1.5 text-xs font-semibold rounded-lg border ${
+                  isCMSActive
+                    ? "bg-amber-500 text-emerald-950 border-amber-400"
+                    : "border-amber-500/50 text-amber-300 hover:bg-amber-800"
+                }`}
+              >
+                CMS
+              </button>
+            )}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-lg hover:bg-emerald-900 text-emerald-100 hover:text-white"

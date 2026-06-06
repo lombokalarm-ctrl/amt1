@@ -6,6 +6,9 @@ import {
   HelpCircle, UserCheck, MessageCircle, AlertCircle, FileSpreadsheet, CheckSquare,
   Lock, LogOut, KeyRound
 } from "lucide-react";
+import pilgrimsKaabaImage from "../assets/images/pilgrims_kaaba_1780615470405.png";
+import pilgrimsCoupleImage from "../assets/images/pilgrims_couple_1780615457585.png";
+import pilgrimsGroupImage from "../assets/images/pilgrims_group_1780615485518.png";
 
 interface AdminCMSProps {
   initialPackages: UmrahPackage[];
@@ -35,13 +38,39 @@ export default function AdminCMS({
   const [activeTab, setActiveTab] = useState<TabType>("stats");
   
   // Login Authentication States
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    return sessionStorage.getItem("admin_logged_in") === "true";
-  });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isCheckingSession, setIsCheckingSession] = useState(true);
   const [adminUsername, setAdminUsername] = useState("");
   const [adminPassword, setAdminPassword] = useState("");
   const [loginError, setLoginError] = useState("");
   const [isSubmittingLogin, setIsSubmittingLogin] = useState(false);
+
+  const forceLogout = (message?: string) => {
+    setIsLoggedIn(false);
+    setAdminPassword("");
+    setActiveTab("stats");
+    setLoginError(message || "");
+  };
+
+  const adminFetch = async (input: RequestInfo | URL, init?: RequestInit) => {
+    const response = await fetch(input, init);
+    if (response.status === 401) {
+      forceLogout("Sesi admin berakhir. Silakan login kembali.");
+      throw new Error("Unauthorized");
+    }
+    return response;
+  };
+
+  const validateSession = async () => {
+    try {
+      const response = await fetch("/api/admin/session");
+      setIsLoggedIn(response.ok);
+    } catch (error) {
+      setIsLoggedIn(false);
+    } finally {
+      setIsCheckingSession(false);
+    }
+  };
 
   const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,8 +85,8 @@ export default function AdminCMS({
       });
 
       if (res.ok) {
-        sessionStorage.setItem("admin_logged_in", "true");
         setIsLoggedIn(true);
+        setLoginError("");
       } else {
         const data = await res.json();
         setLoginError(data.error || "Username atau password salah!");
@@ -69,8 +98,12 @@ export default function AdminCMS({
     }
   };
 
-  const handleLogout = () => {
-    sessionStorage.removeItem("admin_logged_in");
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/admin/logout", { method: "POST" });
+    } catch (error) {
+      console.warn("Gagal mengakhiri sesi admin secara bersih.", error);
+    }
     setIsLoggedIn(false);
     setAdminUsername("");
     setAdminPassword("");
@@ -121,23 +154,25 @@ export default function AdminCMS({
   // Stats refresh timer / poll trigger
   const fetchLatestStats = async () => {
     try {
-      const response = await fetch("/api/stats");
+      const response = await adminFetch("/api/stats");
       if (response.ok) {
         const data = await response.json();
         setStats(data);
       }
     } catch (e) {
-      console.warn("Failed syncing real-time stats:", e);
+      if ((e as Error).message !== "Unauthorized") {
+        console.warn("Failed syncing real-time stats:", e);
+      }
     }
   };
 
   const syncAllData = async () => {
     setLoading(true);
     try {
-      const resPkgs = await fetch("/api/packages");
-      const resBlogs = await fetch("/api/blogs");
-      const resHF = await fetch("/api/header-footer");
-      const resReps = await fetch("/api/reports");
+      const resPkgs = await adminFetch("/api/packages");
+      const resBlogs = await adminFetch("/api/blogs");
+      const resHF = await adminFetch("/api/header-footer");
+      const resReps = await adminFetch("/api/reports");
       
       if (resPkgs.ok) setPackages(await resPkgs.json());
       if (resBlogs.ok) setBlogs(await resBlogs.json());
@@ -161,21 +196,31 @@ export default function AdminCMS({
 
       setAlertMsg({ type: "success", text: "Seluruh basis data CMS & Analis berhasil disinkronkan secara real-time." });
     } catch (e) {
-      setAlertMsg({ type: "error", text: "Gagal menghubungkan ke server sinkronisasi." });
+      if ((e as Error).message !== "Unauthorized") {
+        setAlertMsg({ type: "error", text: "Gagal menghubungkan ke server sinkronisasi." });
+      }
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
+    validateSession();
+  }, []);
+
+  useEffect(() => {
+    if (!isLoggedIn) return;
+
+    syncAllData();
+
     // Poll stats occasionally to simulate real-time analytics
     const interval = setInterval(fetchLatestStats, 8000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isLoggedIn]);
 
   const handleUpdateBookingStatus = async (bookingId: string, nextStatus: "Pending" | "Dihubungi" | "Selesai") => {
     try {
-      const res = await fetch("/api/bookings/status", {
+      const res = await adminFetch("/api/bookings/status", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: bookingId, status: nextStatus })
@@ -195,7 +240,7 @@ export default function AdminCMS({
     if (!editingPackage) return;
     
     try {
-      const res = await fetch("/api/packages", {
+      const res = await adminFetch("/api/packages", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(editingPackage)
@@ -218,7 +263,7 @@ export default function AdminCMS({
   const handleDeletePackage = async (id: string) => {
     if (!confirm("Hapus paket umroh ini secara permanen dari server?")) return;
     try {
-      const res = await fetch(`/api/packages/${id}`, { method: "DELETE" });
+      const res = await adminFetch(`/api/packages/${id}`, { method: "DELETE" });
       if (res.ok) {
         const updated = packages.filter(p => p.id !== id);
         setPackages(updated);
@@ -240,7 +285,7 @@ export default function AdminCMS({
     setAnalyzingSeo(true);
     setSeoResult(null);
     try {
-      const response = await fetch("/api/seo-analyze", {
+      const response = await adminFetch("/api/seo-analyze", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -272,7 +317,7 @@ export default function AdminCMS({
     if (!editingBlog) return;
 
     try {
-      const res = await fetch("/api/blogs", {
+      const res = await adminFetch("/api/blogs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(editingBlog)
@@ -296,7 +341,7 @@ export default function AdminCMS({
   const handleDeleteBlog = async (id: string) => {
     if (!confirm("Hapus artikel ini secara permanen dari server?")) return;
     try {
-      const res = await fetch(`/api/blogs/${id}`, { method: "DELETE" });
+      const res = await adminFetch(`/api/blogs/${id}`, { method: "DELETE" });
       if (res.ok) {
         const updated = blogs.filter(b => b.id !== id);
         setBlogs(updated);
@@ -329,7 +374,7 @@ export default function AdminCMS({
     };
 
     try {
-      const response = await fetch("/api/header-footer", {
+      const response = await adminFetch("/api/header-footer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ header: nextHeader, footer: nextFooter })
@@ -349,12 +394,12 @@ export default function AdminCMS({
   const handleGenerateMonthlyReport = async () => {
     setLoading(true);
     try {
-      const response = await fetch("/api/reports/generate", {
+      const response = await adminFetch("/api/reports/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           period: "Juni 2026",
-          recipientEmail: "lombok.alarm@gmail.com"
+          recipientEmail: footer.email
         })
       });
       if (response.ok) {
@@ -362,15 +407,31 @@ export default function AdminCMS({
         setReports(data.allReports);
         setAlertMsg({ 
           type: "success", 
-          text: "Sistem pelaporan otomatis berhasil dieksekusi secara periodik! Salinan laporan konten dialirkan secara aman melalui email simulasi ke lombok.alarm@gmail.com dan dicatatkan pada panel histori." 
+          text: `Sistem pelaporan otomatis berhasil dieksekusi dan histori laporan diperbarui untuk ${footer.email}.`
         });
       }
     } catch (e) {
-      setAlertMsg({ type: "error", text: "Koneksi AI pelaporan terputus." });
+      if ((e as Error).message !== "Unauthorized") {
+        setAlertMsg({ type: "error", text: "Koneksi AI pelaporan terputus." });
+      }
     } finally {
       setLoading(false);
     }
   };
+
+  if (isCheckingSession) {
+    return (
+      <div className="bg-neutral-900 border border-emerald-800/40 rounded-3xl overflow-hidden shadow-2xl text-white max-w-xl mx-auto py-12 px-6 sm:px-10 mt-6 md:mt-12">
+        <div className="flex flex-col items-center text-center space-y-4">
+          <RefreshCw className="w-8 h-8 animate-spin text-emerald-400" />
+          <div>
+            <h2 className="text-xl font-bold tracking-tight">Memeriksa sesi administrator</h2>
+            <p className="text-sm text-neutral-400 mt-2">Menyiapkan akses panel admin dengan sesi server-side yang aman.</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!isLoggedIn) {
     return (
@@ -441,21 +502,11 @@ export default function AdminCMS({
         <div className="mt-8 pt-6 border-t border-neutral-800 text-center">
           <div className="p-4 bg-emerald-950/20 border border-emerald-900/30 rounded-2xl inline-block text-left w-full">
             <span className="block text-[10px] tracking-widest font-mono uppercase text-emerald-500 font-bold mb-1">
-              Petunjuk Akses Penilai & QA
+              Konfigurasi Akses Aman
             </span>
             <p className="text-xs text-neutral-400 leading-relaxed">
-              Untuk log-in segera dan meninjau seluruh fitur penuh pengeditan SEO, gunakan detail akun demo berikut:
+              Panel admin tidak lagi memakai akun demo di sisi klien. Atur `ADMIN_USERNAME` dan `ADMIN_PASSWORD_SHA256` atau `ADMIN_PASSWORD` pada server untuk mengaktifkan login.
             </p>
-            <div className="bg-neutral-950/80 p-2.5 rounded-xl border border-neutral-900 grid grid-cols-2 gap-3 mt-2.5 text-xs font-mono">
-              <div>
-                <span className="text-neutral-500 block text-[9px] uppercase">Username</span>
-                <span className="text-amber-400 font-bold">admin</span>
-              </div>
-              <div>
-                <span className="text-neutral-500 block text-[9px] uppercase">Password</span>
-                <span className="text-amber-400 font-bold">admin123</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -739,7 +790,7 @@ export default function AdminCMS({
                   departureDate: "",
                   facilities: ["Tiket PP", "Visa resmi Kemenag", "Hotel Bintang 4", "Air Zam-zam 5L"],
                   description: "",
-                  imageUrl: "/src/assets/images/pilgrims_kaaba_1780615470405.png",
+                  imageUrl: pilgrimsKaabaImage,
                   active: true
                 })}
                 className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-emerald-950 font-bold text-xs rounded-xl flex items-center gap-1.5"
@@ -1057,7 +1108,7 @@ export default function AdminCMS({
                             alt="Cover preview" 
                             className="w-12 h-10 object-cover rounded-lg border border-neutral-850 shrink-0 bg-neutral-900"
                             onError={(e) => {
-                              (e.target as HTMLImageElement).src = '/src/assets/images/pilgrims_group_1780615485518.png';
+                              (e.target as HTMLImageElement).src = pilgrimsGroupImage;
                             }}
                           />
                         )}
@@ -1066,21 +1117,21 @@ export default function AdminCMS({
                         <span>Pilihan Preset Populer:</span>
                         <button 
                           type="button" 
-                          onClick={() => setEditingBlog({ ...editingBlog, imageUrl: "/src/assets/images/pilgrims_group_1780615485518.png" })}
+                          onClick={() => setEditingBlog({ ...editingBlog, imageUrl: pilgrimsGroupImage })}
                           className="text-amber-400 underline hover:text-amber-300 pointer-events-auto"
                         >
                           Rombongan Ka'bah
                         </button>
                         <button 
                           type="button" 
-                          onClick={() => setEditingBlog({ ...editingBlog, imageUrl: "/src/assets/images/pilgrims_kaaba_1780615470405.png" })}
+                          onClick={() => setEditingBlog({ ...editingBlog, imageUrl: pilgrimsKaabaImage })}
                           className="text-amber-400 underline hover:text-amber-300 pointer-events-auto"
                         >
                           Ka'bah Makkah
                         </button>
                         <button 
                           type="button" 
-                          onClick={() => setEditingBlog({ ...editingBlog, imageUrl: "/src/assets/images/pilgrims_couple_1780615457585.png" })}
+                          onClick={() => setEditingBlog({ ...editingBlog, imageUrl: pilgrimsCoupleImage })}
                           className="text-amber-400 underline hover:text-amber-300 pointer-events-auto"
                         >
                           Pasangan Ziyarah
@@ -1467,7 +1518,7 @@ export default function AdminCMS({
               <div className="space-y-1">
                 <h4 className="font-bold text-sm text-neutral-200 uppercase tracking-widest">Laporan Bulanan & Konversi Otomatis</h4>
                 <p className="text-xs text-neutral-400 leading-relaxed">
-                  Menyederhanakan evaluasi performa SEO dan mendistribusikan laporan konversi prospek bulanan langsung menuju kotak surat admin utama (<strong className="text-neutral-300">lombok.alarm@gmail.com</strong>).
+                  Menyederhanakan evaluasi performa SEO dan mendistribusikan laporan konversi prospek bulanan langsung menuju email admin yang aktif saat ini (<strong className="text-neutral-300">{footer.email}</strong>).
                 </p>
               </div>
 

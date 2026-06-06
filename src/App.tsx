@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { UmrahPackage, BlogPost, HeaderConfig, FooterConfig, StatsData, Booking, EmailReport } from "./types";
+import React, { useEffect, useRef, useState } from "react";
+import { UmrahPackage, BlogPost, HeaderConfig, FooterConfig, Booking } from "./types";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Packages from "./components/Packages";
@@ -17,10 +17,48 @@ import {
   initialPackages, 
   initialBlogs, 
   initialHeader, 
-  initialFooter, 
-  initialStats, 
-  initialReports 
+  initialFooter,
+  initialStats,
+  initialReports
 } from "./seed";
+
+function getHashRoute() {
+  if (typeof window === "undefined" || !window.location.hash) {
+    return "#";
+  }
+
+  return window.location.hash === "#admin" ? "#admin" : window.location.hash;
+}
+
+function isArticlePath() {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  return /^\/artikel\/[^/]+\/?$/.test(window.location.pathname);
+}
+
+function getInitialSection() {
+  const initialRoute = getHashRoute();
+  if (initialRoute === "#admin") {
+    return "#";
+  }
+
+  return isArticlePath() ? "#artikel" : initialRoute;
+}
+
+function replaceHash(hash: string) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  if (hash === "#") {
+    window.history.replaceState(null, "", "/");
+    return;
+  }
+
+  window.history.replaceState(null, "", `/${hash}`);
+}
 
 export default function App() {
   // CMS Configuration States
@@ -30,13 +68,12 @@ export default function App() {
   // Data States
   const [packages, setPackages] = useState<UmrahPackage[]>(initialPackages);
   const [blogs, setBlogs] = useState<BlogPost[]>(initialBlogs);
-  const [stats, setStats] = useState<StatsData>(initialStats);
-  const [reports, setReports] = useState<EmailReport[]>(initialReports);
 
   // Layout UI States
-  const [activeSection, setActiveSection] = useState("#");
-  const [isCMSActive, setIsCMSActive] = useState(false);
+  const [activeSection, setActiveSection] = useState(() => getInitialSection());
+  const [isCMSActive, setIsCMSActive] = useState(() => getHashRoute() === "#admin");
   const [selectedPackageForBooking, setSelectedPackageForBooking] = useState<UmrahPackage | null>(null);
+  const initialPageViewLogged = useRef(false);
 
   // Syncing with Backend Server on mount
   useEffect(() => {
@@ -61,30 +98,37 @@ export default function App() {
           setBlogs(data);
         }
 
-        const resStats = await fetch("/api/stats");
-        if (resStats.ok) {
-          const data = await resStats.json();
-          setStats(data);
+        // StrictMode menjalankan effect dua kali di development; guard ini menjaga analytics tetap idempoten.
+        if (!initialPageViewLogged.current) {
+          initialPageViewLogged.current = true;
+          await fetch("/api/stats/click", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ action: "pageview", path: "Beranda" })
+          });
         }
-
-        const resReps = await fetch("/api/reports");
-        if (resReps.ok) {
-          const data = await resReps.json();
-          setReports(data);
-        }
-
-        // Log initial organic mount landing page view
-         await fetch("/api/stats/click", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ action: "pageview", path: "Beranda" })
-        });
 
       } catch (err) {
         console.warn("Express APIs are booting or loading from offline local seeds...", err);
       }
     }
     initFetch();
+  }, []);
+
+  useEffect(() => {
+    const syncRouteFromHash = () => {
+      const nextRoute = getHashRoute();
+      if (nextRoute === "#admin") {
+        setIsCMSActive(true);
+        return;
+      }
+
+      setIsCMSActive(false);
+      setActiveSection(isArticlePath() ? "#artikel" : nextRoute);
+    };
+
+    window.addEventListener("hashchange", syncRouteFromHash);
+    return () => window.removeEventListener("hashchange", syncRouteFromHash);
   }, []);
 
   // Track CTA user behavior click events (WhatsApp, Bookings etc)
@@ -95,14 +139,28 @@ export default function App() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action, path, city })
       });
-      // Refresh local analytics numbers dynamically
-      const resStats = await fetch("/api/stats");
-      if (resStats.ok) {
-        setStats(await resStats.json());
-      }
     } catch (e) {
       console.warn("Analytics tracker offline:", e);
     }
+  };
+
+  const navigateToSection = (href: string) => {
+    replaceHash(href);
+    setIsCMSActive(false);
+    setActiveSection(href);
+    onScrollToSection(href);
+  };
+
+  const openCMSPanel = () => {
+    replaceHash("#admin");
+    setIsCMSActive(true);
+  };
+
+  const closeCMSPanel = () => {
+    replaceHash("#");
+    setIsCMSActive(false);
+    setActiveSection("#");
+    onScrollToSection("#");
   };
 
   const handleWhatsappCtaRedirect = (packageName: string) => {
@@ -141,14 +199,9 @@ export default function App() {
         config={headerConfig}
         activeSection={activeSection}
         isCMSActive={isCMSActive}
-        onNavigate={(href) => {
-          setIsCMSActive(false);
-          setActiveSection(href);
-          onScrollToSection(href);
-        }}
-        onOpenCMS={() => {
-          setIsCMSActive(!isCMSActive);
-        }}
+        showCMSAccess={import.meta.env.DEV || isCMSActive}
+        onNavigate={navigateToSection}
+        onOpenCMS={openCMSPanel}
       />
 
       {/* Main Container switch between CMS vs Landing Page */}
@@ -163,7 +216,7 @@ export default function App() {
             </div>
             
             <button
-              onClick={() => setIsCMSActive(false)}
+              onClick={closeCMSPanel}
               className="px-5 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white font-bold text-xs rounded-xl shadow-md transition-all cursor-pointer"
             >
               ← Kembali ke Beranda Landing Page
@@ -175,8 +228,8 @@ export default function App() {
             initialBlogs={blogs}
             initialHeader={headerConfig}
             initialFooter={footerConfig}
-            initialStats={stats}
-            initialReports={reports}
+            initialStats={initialStats}
+            initialReports={initialReports}
             onUpdateHeaderFooter={handleCMSHeaderFooterUpdate}
             onUpdatePackages={handleCMSPackagesUpdate}
             onUpdateBlogs={handleCMSBlogsUpdate}

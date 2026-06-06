@@ -1,4 +1,9 @@
 import { UmrahPackage, BlogPost, HeaderConfig, FooterConfig, Booking, StatsData, EmailReport } from "./types";
+import pilgrimsKaabaImage from "./assets/images/pilgrims_kaaba_1780615470405.png";
+import pilgrimsCoupleImage from "./assets/images/pilgrims_couple_1780615457585.png";
+import pilgrimsGroupImage from "./assets/images/pilgrims_group_1780615485518.png";
+import pilgrimsAirportImage from "./assets/images/pilgrims_airport_1780615443945.png";
+import manIhramPrayImage from "./assets/images/man_ihram_pray_1780615496601.png";
 
 export const initialPackages: UmrahPackage[] = [
   {
@@ -23,7 +28,7 @@ export const initialPackages: UmrahPackage[] = [
       "Manasik Umroh Intensif di Hotel Mataram"
     ],
     description: "Paket Umroh Premium Amantubillahi dirancang khusus bagi jamaah asal Lombok yang mengutamakan kenyamanan maksimal. Jarak hotel yang sangat dekat dari Masjidil Haram (<100m) memudahkan jamaah lansia maupun keluarga untuk melaksanakan shalat fardhu dan ibadah sunnah 24 jam dengan nyaman.",
-    imageUrl: "/src/assets/images/pilgrims_kaaba_1780615470405.png", // Taj Al Safwah / Kaaba view representation
+    imageUrl: pilgrimsKaabaImage, // Taj Al Safwah / Kaaba view representation
     active: true
   },
   {
@@ -47,7 +52,7 @@ export const initialPackages: UmrahPackage[] = [
       "Air Zam-Zam 5 Liter"
     ],
     description: "Paket terpopuler untuk masyarakat Lombok Timur, Lombok Tengah, dan Barat. Menyajikan perpaduan sempurna antara harga hemat terjangkau dan fasilitas berkelas berbintang empat. Menawarkan pengalaman ibadah yang tenang, teratur, dan penuh kekeluargaan.",
-    imageUrl: "/src/assets/images/pilgrims_couple_1780615457585.png", // Medina Mosque representation
+    imageUrl: pilgrimsCoupleImage, // Medina Mosque representation
     active: true
   },
   {
@@ -70,7 +75,7 @@ export const initialPackages: UmrahPackage[] = [
       "Air Zam-Zam 5 Liter"
     ],
     description: "Sangat direkomendasikan untuk Anda yang mencari travel umroh lombok termurah tanpa mengurangi keabsahan ibadah. Didampingi tour leader berpengalaman asal Mataram yang ramah dan siap membantu kebutuhan pribadi jamaah kapan pun.",
-    imageUrl: "/src/assets/images/pilgrims_group_1780615485518.png", // Kaaba representation
+    imageUrl: pilgrimsGroupImage, // Kaaba representation
     active: true
   }
 ];
@@ -85,7 +90,7 @@ export const initialBlogs: BlogPost[] = [
     views: 342,
     readTimeMin: 6,
     tags: ["Travel Umroh Lombok", "Mataram", "Lombok Barat"],
-    imageUrl: "/src/assets/images/pilgrims_airport_1780615443945.png",
+    imageUrl: pilgrimsAirportImage,
     seoFocusKeyword: "travel umroh lombok",
     seoMetaTitle: "Travel Umroh Lombok Terpercaya - Amantubillahi Tour Mataram",
     seoMetaDesc: "Mencari travel umroh lombok terpercaya di Mataram dan Lombok Barat? Dapatkan panduan lengkap biaya, syarat pendaftaran, dan rincian hotel bintang Amantubillahi.",
@@ -124,7 +129,7 @@ Hubungi kantor pelayanan terdekat kami di Mataram atau klik tombol WhatsApp di p
     views: 289,
     readTimeMin: 5,
     tags: ["Umrah Lombok", "Praya", "Lombok Tengah"],
-    imageUrl: "/src/assets/images/pilgrims_kaaba_1780615470405.png",
+    imageUrl: pilgrimsKaabaImage,
     seoFocusKeyword: "umrah lombok",
     seoMetaTitle: "Biaya Paket Umrah Lombok Terbaru 2026 - Amantubillahi Praya",
     seoMetaDesc: "Info jadwal keberangkatan dan biaya paket umrah lombok terbaru untuk warga Praya, Lombok Tengah. Hubungi travel umrah terdekat berizin resmi Kemenag.",
@@ -164,7 +169,7 @@ Segera daftarkan diri Anda dan keluarga untuk mengamankan seat penerbangan umrah
     views: 412,
     readTimeMin: 7,
     tags: ["Travel Umroh Terdekat", "Lombok Timur", "Selong", "Masbagik"],
-    imageUrl: "/src/assets/images/pilgrims_group_1780615485518.png",
+    imageUrl: pilgrimsGroupImage,
     seoFocusKeyword: "travel umroh terdekat",
     seoMetaTitle: "Travel Umroh Terdekat di Lombok Timur - Selong & Masbagik",
     seoMetaDesc: "Cari travel umroh terdekat di Lombok Timur? Temukan Amantubillahi Tour di dekat Selong, Masbagik, Aikmel. Dapatkan layanan amanah resmi Kemenag.",
@@ -203,7 +208,7 @@ Dapatkan informasi terlengkap mengenai paket keberangkatan musim ini dengan meng
     views: 198,
     readTimeMin: 5,
     tags: ["Travel Umrah Terpercaya", "Sumbawa", "Sumbawa Barat", "Dompu"],
-    imageUrl: "/src/assets/images/man_ihram_pray_1780615496601.png",
+    imageUrl: manIhramPrayImage,
     seoFocusKeyword: "travel umrah terpercaya",
     seoMetaTitle: "Travel Umrah Terpercaya Sumbawa, KSB & Dompu - Amantubillahi",
     seoMetaDesc: "Rekomendasi travel umrah terpercaya pendaftaran wilayah Sumbawa, Sumbawa Barat, Dompu dengan keberangkatan via Lombok. Simak bimbingan umroh syar'i Amantubillahi.",
@@ -242,7 +247,7 @@ Hubungi hotline kami atau kirimkan form pemesanan booking online Anda untuk penj
     views: 167,
     readTimeMin: 4,
     tags: ["Umrah Lombok", "Bima", "Kota Bima"],
-    imageUrl: "/src/assets/images/pilgrims_couple_1780615457585.png",
+    imageUrl: pilgrimsCoupleImage,
     seoFocusKeyword: "travel umrah terdekat",
     seoMetaTitle: "Pendaftaran Travel Umrah Terdekat di Bima NTB | Amantubillahi",
     seoMetaDesc: "Daftar Umroh Lombok kini lebih praktis untuk jamaah Kota Bima & Kabupaten Bima. Amantubillahi Tour travel umrah terdekat yang amanah resmi Kemenag.",
@@ -322,44 +327,7 @@ export const initialStats: StatsData = {
   },
   whatsappClicks: 184,
   bookingSubmissions: 32,
-  bookings: [
-    {
-      id: "b-1",
-      fullName: "Haji Ahmad Fauzi",
-      phone: "081912345678",
-      city: "Mataram",
-      packageId: "pkg-1",
-      packageName: "Paket Umroh Al-Haram Lombok (Bintang 5)",
-      passengersCount: 2,
-      notes: "Mohon kamar double untuk suami istri.",
-      date: "2026-06-01",
-      status: "Dihubungi"
-    },
-    {
-      id: "b-2",
-      fullName: "Siti Rahmawati",
-      phone: "087865231900",
-      city: "Selong, Lombok Timur",
-      packageId: "pkg-2",
-      packageName: "Paket Umroh Berkah Syawal Lombok (Bintang 4)",
-      passengersCount: 4,
-      notes: "Keluarga rombongan, mohon didekatkan kamarnya.",
-      date: "2026-06-03",
-      status: "Pending"
-    },
-    {
-      id: "b-3",
-      fullName: "Ustadz Lalu Yusuf",
-      phone: "081299887766",
-      city: "Praya, Lombok Tengah",
-      packageId: "pkg-1",
-      packageName: "Paket Umroh Al-Haram Lombok (Bintang 5)",
-      passengersCount: 1,
-      notes: "Keberangkatan pribadi.",
-      date: "2026-06-04",
-      status: "Pending"
-    }
-  ],
+  bookings: [],
   dailyStats: [
     { date: "2026-05-29", views: 42, whatsapp: 5, bookings: 1 },
     { date: "2026-05-30", views: 48, whatsapp: 6, bookings: 0 },
@@ -371,18 +339,4 @@ export const initialStats: StatsData = {
   ]
 };
 
-export const initialReports: EmailReport[] = [
-  {
-    id: "rep-1",
-    period: "Mei 2026",
-    dateGenerated: "2026-06-01T01:00:00Z",
-    totalViews: 1210,
-    totalBookings: 21,
-    totalWhatsapp: 120,
-    conversionRate: "11.6%",
-    topPerformingContent: "Artikel Lombok Timur (Selong & Masbagik)",
-    aiSeoInsights: "Artikel SEO Lombok Timur mendapatkan lonjakan organik tajam. Disarankan menambah kampanye paket khusus keberangkatan keluarga di Lombok Barat.",
-    recipientEmail: "lombok.alarm@gmail.com",
-    status: "Sent"
-  }
-];
+export const initialReports: EmailReport[] = [];

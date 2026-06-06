@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BlogPost } from "../types";
 import { BookOpen, Calendar, MapPin, Eye, ArrowRight, X, Sparkles, CheckCircle } from "lucide-react";
 
@@ -8,9 +8,124 @@ interface ArticlesProps {
   onTrackClick: (action: string, path: string, city?: string) => void;
 }
 
+interface MetadataSnapshot {
+  title: string;
+  description: string;
+  ogTitle: string;
+  ogDescription: string;
+  twitterTitle: string;
+  twitterDescription: string;
+  canonicalUrl: string;
+  ogUrl: string;
+  ogImage: string;
+  twitterImage: string;
+}
+
+function getMetaContent(selector: string) {
+  return document.querySelector<HTMLMetaElement>(selector)?.content || "";
+}
+
+function getLinkHref(selector: string) {
+  return document.querySelector<HTMLLinkElement>(selector)?.href || "";
+}
+
+function upsertMeta(selector: string, attr: "name" | "property", value: string, content: string) {
+  let meta = document.querySelector<HTMLMetaElement>(selector);
+  if (!meta) {
+    meta = document.createElement("meta");
+    meta.setAttribute(attr, value);
+    document.head.appendChild(meta);
+  }
+  meta.content = content;
+}
+
+function upsertLink(selector: string, rel: string, href: string) {
+  let link = document.querySelector<HTMLLinkElement>(selector);
+  if (!link) {
+    link = document.createElement("link");
+    link.setAttribute("rel", rel);
+    document.head.appendChild(link);
+  }
+  link.href = href;
+}
+
+function toAbsoluteUrl(candidate?: string) {
+  if (!candidate) {
+    return window.location.origin;
+  }
+
+  try {
+    return new URL(candidate, window.location.origin).toString();
+  } catch {
+    return window.location.origin;
+  }
+}
+
+function buildArticleDescription(article: BlogPost) {
+  const sanitized = article.content.replace(/\s+/g, " ").trim();
+  return article.seoMetaDesc?.trim() || sanitized.slice(0, 160);
+}
+
+function updateDocumentMetadata(article: BlogPost | null, defaults: MetadataSnapshot) {
+  if (!article) {
+    document.title = defaults.title;
+    upsertMeta('meta[name="description"]', "name", "description", defaults.description);
+    upsertMeta('meta[property="og:title"]', "property", "og:title", defaults.ogTitle);
+    upsertMeta('meta[property="og:description"]', "property", "og:description", defaults.ogDescription);
+    upsertMeta('meta[property="og:url"]', "property", "og:url", defaults.ogUrl);
+    upsertMeta('meta[property="og:image"]', "property", "og:image", defaults.ogImage);
+    upsertMeta('meta[name="twitter:title"]', "name", "twitter:title", defaults.twitterTitle);
+    upsertMeta('meta[name="twitter:description"]', "name", "twitter:description", defaults.twitterDescription);
+    upsertMeta('meta[name="twitter:image"]', "name", "twitter:image", defaults.twitterImage);
+    upsertLink('link[rel="canonical"]', "canonical", defaults.canonicalUrl);
+    return;
+  }
+
+  const metaTitle = article.seoMetaTitle?.trim() || `${article.title} | Amantubillahi`;
+  const metaDescription = buildArticleDescription(article);
+  const currentUrl = window.location.href;
+  const imageUrl = toAbsoluteUrl(article.imageUrl);
+  document.title = metaTitle;
+  upsertMeta('meta[name="description"]', "name", "description", metaDescription);
+  upsertMeta('meta[property="og:title"]', "property", "og:title", metaTitle);
+  upsertMeta('meta[property="og:description"]', "property", "og:description", metaDescription);
+  upsertMeta('meta[property="og:url"]', "property", "og:url", currentUrl);
+  upsertMeta('meta[property="og:image"]', "property", "og:image", imageUrl);
+  upsertMeta('meta[name="twitter:title"]', "name", "twitter:title", metaTitle);
+  upsertMeta('meta[name="twitter:description"]', "name", "twitter:description", metaDescription);
+  upsertMeta('meta[name="twitter:image"]', "name", "twitter:image", imageUrl);
+  upsertLink('link[rel="canonical"]', "canonical", currentUrl);
+}
+
+function getArticleSlugFromUrl() {
+  const articlePathMatch = window.location.pathname.match(/^\/artikel\/([^/]+)\/?$/);
+  if (articlePathMatch?.[1]) {
+    return decodeURIComponent(articlePathMatch[1]);
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  return params.get("article");
+}
+
+function updateArticleUrl(slug?: string) {
+  const url = new URL(window.location.href);
+  if (slug) {
+    url.pathname = `/artikel/${slug}`;
+    url.search = "";
+    url.hash = "";
+  } else {
+    url.pathname = "/";
+    url.search = "";
+    url.hash = "#artikel";
+  }
+  window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+}
+
 export default function Articles({ articles, onSelectArticle, onTrackClick }: ArticlesProps) {
   const [selectedCityFilter, setSelectedCityFilter] = useState<string>("Semua");
   const [readingArticle, setReadingArticle] = useState<BlogPost | null>(null);
+  const defaultsRef = useRef<MetadataSnapshot | null>(null);
+  const autoOpenedSlugRef = useRef<string | null>(null);
 
   const cities = [
     "Semua",
@@ -22,24 +137,68 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
     "Bima"
   ];
 
-  const handleOpenArticle = async (post: BlogPost) => {
+  const openArticleByPost = async (post: BlogPost) => {
     try {
       const response = await fetch(`/api/blogs/${post.slug}`);
       if (response.ok) {
         const fullBlog = await response.json();
         setReadingArticle(fullBlog);
+        updateArticleUrl(post.slug);
         onTrackClick("pageview", `Artikel: ${post.slug}`, post.city);
         onSelectArticle(post.slug);
       }
     } catch (e) {
       console.warn("Failed fetching blog view increment:", e);
       setReadingArticle(post); // Fallback
+      updateArticleUrl(post.slug);
     }
+  };
+
+  const handleOpenArticle = async (post: BlogPost) => {
+    await openArticleByPost(post);
   };
 
   const handleCloseArticle = () => {
     setReadingArticle(null);
+    updateArticleUrl();
   };
+
+  useEffect(() => {
+    if (!defaultsRef.current) {
+      defaultsRef.current = {
+        title: document.title,
+        description: getMetaContent('meta[name="description"]'),
+        ogTitle: getMetaContent('meta[property="og:title"]'),
+        ogDescription: getMetaContent('meta[property="og:description"]'),
+        canonicalUrl: getLinkHref('link[rel="canonical"]'),
+        ogUrl: getMetaContent('meta[property="og:url"]'),
+        ogImage: getMetaContent('meta[property="og:image"]'),
+        twitterTitle: getMetaContent('meta[name="twitter:title"]'),
+        twitterDescription: getMetaContent('meta[name="twitter:description"]'),
+        twitterImage: getMetaContent('meta[name="twitter:image"]'),
+      };
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!defaultsRef.current) return;
+    updateDocumentMetadata(readingArticle, defaultsRef.current);
+  }, [readingArticle]);
+
+  useEffect(() => {
+    const articleSlug = getArticleSlugFromUrl();
+    if (!articleSlug || articleSlug === autoOpenedSlugRef.current) {
+      return;
+    }
+
+    const matchedArticle = articles.find((article) => article.slug === articleSlug);
+    if (!matchedArticle) {
+      return;
+    }
+
+    autoOpenedSlugRef.current = articleSlug;
+    void openArticleByPost(matchedArticle);
+  }, [articles]);
 
   const filteredArticles = selectedCityFilter === "Semua"
     ? articles
@@ -197,6 +356,18 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
                     <button
                       onClick={() => {
                         handleCloseArticle();
+                        updateDocumentMetadata(null, defaultsRef.current || {
+                          title: document.title,
+                          description: "",
+                          ogTitle: document.title,
+                          ogDescription: "",
+                          canonicalUrl: window.location.href,
+                          ogUrl: window.location.href,
+                          ogImage: "",
+                          twitterTitle: document.title,
+                          twitterDescription: "",
+                          twitterImage: "",
+                        });
                         onScrollToSection("#booking");
                       }}
                       className="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl transition-all"
@@ -236,6 +407,10 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
 }
 
 function onScrollToSection(sectionId: string) {
+  if (sectionId === "#") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
   const element = document.querySelector(sectionId);
   if (element) {
     element.scrollIntoView({ behavior: "smooth" });

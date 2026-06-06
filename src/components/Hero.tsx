@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight, ShieldCheck, HeartHandshake, Compass, Users2, Landmark } from "lucide-react";
+import heroBackgroundImage from "../assets/images/pilgrims_group_1780615485518.png";
 
 interface HeroProps {
   onScrollToSection: (sectionId: string) => void;
@@ -8,7 +9,7 @@ interface HeroProps {
 
 export default function Hero({ onScrollToSection, phone }: HeroProps) {
   return (
-    <section className="relative overflow-hidden text-white min-h-[580px] lg:min-h-[640px] flex items-center justify-center py-20 bg-cover bg-center" style={{ backgroundImage: "linear-gradient(rgba(6, 78, 59, 0.90), rgba(6, 78, 59, 0.90)), url('/src/assets/images/pilgrims_group_1780615485518.png')" }}>
+    <section className="relative overflow-hidden text-white min-h-[580px] lg:min-h-[640px] flex items-center justify-center py-20 bg-cover bg-center" style={{ backgroundImage: `linear-gradient(rgba(6, 78, 59, 0.90), rgba(6, 78, 59, 0.90)), url('${heroBackgroundImage}')` }}>
       
       {/* Absolute Decorative Geometric Shapes */}
       <div className="absolute inset-0 bg-black/10 z-0"></div>
