@@ -203,8 +203,20 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
 
   const filteredArticles = selectedCityFilter === "Semua"
     ? articles
-    : articles.filter(a => a.city.toLowerCase().includes(selectedCityFilter.toLowerCase()) || 
+    : articles.filter(a => a.city.toLowerCase().includes(selectedCityFilter.toLowerCase()) ||
                            selectedCityFilter.toLowerCase().includes(a.city.toLowerCase()));
+  const displayedArticles = [...filteredArticles]
+    .sort((a, b) => {
+      const timeA = Date.parse(a.date) || 0;
+      const timeB = Date.parse(b.date) || 0;
+
+      if (timeB !== timeA) {
+        return timeB - timeA;
+      }
+
+      return b.id.localeCompare(a.id);
+    })
+    .slice(0, 6);
 
   return (
     <section id="artikel" className="py-20 bg-neutral-900 text-white scroll-mt-20">
@@ -241,13 +253,18 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
         </div>
 
         {/* Articles Grid list */}
-        {filteredArticles.length === 0 ? (
+        {displayedArticles.length === 0 ? (
           <div className="text-center py-16 bg-neutral-950 rounded-2xl border border-neutral-800/40 text-neutral-500">
             Belum ada artikel yang ditayangkan khusus untuk kota pilihan ini. Gunakan CMS Admin untuk menambahkan artikel baru!
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredArticles.map((post) => (
+          <div className="space-y-4">
+            <div className="flex items-center justify-between gap-3 text-xs text-neutral-400">
+              <span>Menampilkan 6 artikel terbaru agar landing page tetap ringkas dan rapat.</span>
+              <span>{displayedArticles.length} / {filteredArticles.length} artikel</span>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {displayedArticles.map((post) => (
               <a
                 key={post.id}
                 href={`/artikel/${post.slug}`}
@@ -312,6 +329,7 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
 
               </a>
             ))}
+            </div>
           </div>
         )}
 
