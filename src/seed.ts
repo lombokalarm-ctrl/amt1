@@ -276,6 +276,151 @@ Gunakan fitur booking online di website kami hari ini untuk mengunci kuota keber
         "Sebutkan maskapai penerbangan transit domestik Bima-Lombok."
       ]
     }
+  },
+  {
+    id: "blog-6",
+    title: "Umrah Lombok Murah untuk Jamaah Bima: Cara Memilih Paket Hemat yang Tetap Aman",
+    slug: "umrah-lombok-murah-bima",
+    city: "Bima",
+    date: "2026-06-06",
+    views: 0,
+    readTimeMin: 6,
+    tags: ["Umrah Lombok Murah", "Bima", "Kabupaten Bima", "Kota Bima"],
+    imageUrl: pilgrimsAirportImage,
+    seoFocusKeyword: "umrah lombok murah",
+    seoMetaTitle: "Umrah Lombok Murah untuk Jamaah Bima | Paket Hemat Resmi Amantubillahi",
+    seoMetaDesc: "Cari umrah lombok murah dari Bima? Simak panduan memilih paket hemat yang tetap resmi, aman, dan nyaman untuk jamaah Kota Bima, Woha, Sape, dan sekitarnya.",
+    content: `Mencari **umrah lombok murah** menjadi kebutuhan banyak calon jamaah dari **Kota Bima**, **Kabupaten Bima**, Woha, Sape, Bolo, hingga Monta. Banyak keluarga ingin berangkat dengan biaya yang lebih terjangkau, tetapi tetap mengutamakan legalitas travel, kepastian jadwal, serta pendampingan ibadah yang aman. Karena itu, memilih paket hemat tidak boleh hanya melihat harga paling rendah, tetapi juga harus memperhatikan isi layanan yang benar-benar didapat jamaah.
+
+Bagi masyarakat Bima, program **umrah lombok murah** dari Amantubillahi cocok untuk jamaah yang ingin berangkat melalui jalur yang tertata, dengan alur pendaftaran yang jelas dan tim yang mudah dihubungi. Keberangkatan dilakukan melalui Lombok sehingga proses koordinasi dokumen, manasik, dan penjadwalan keberangkatan dapat dibuat lebih rapi untuk rombongan dari wilayah timur NTB.
+
+### Apa yang Harus Dicek Sebelum Memilih Umrah Lombok Murah dari Bima?
+
+1. **Pastikan travel memiliki izin resmi**. Harga hemat tetap harus datang dari travel yang legal dan jelas identitas kantornya.
+2. **Periksa komponen biaya**. Tanyakan apakah harga sudah termasuk visa, tiket, hotel, makan, perlengkapan, dan air zam-zam agar tidak muncul biaya tambahan di belakang.
+3. **Lihat skema keberangkatan dari Bima ke Lombok**. Jamaah perlu tahu apakah ada bantuan koordinasi perjalanan domestik, pengumpulan berkas, dan jadwal manasik.
+4. **Cek kualitas pendampingan ibadah**. Paket ekonomis tetap harus memberi pembimbing yang siap mendampingi jamaah selama di tanah suci.
+
+### Keunggulan Paket Hemat untuk Jamaah Bima
+
+Paket **umrah lombok murah** tidak berarti pelayanan seadanya. Untuk jamaah Bima, keunggulan utama justru ada pada efisiensi rute, koordinasi keberangkatan rombongan, dan fleksibilitas konsultasi jarak jauh. Jamaah dapat berkonsultasi lebih dulu melalui WhatsApp, lalu melengkapi berkas secara bertahap tanpa harus sering bolak-balik ke Mataram.
+
+Program ini juga cocok untuk keluarga, pasangan, maupun rombongan desa yang ingin berangkat bersama. Dengan pengaturan kuota lebih awal, jamaah dari Bima dapat memperoleh harga lebih ringan sekaligus tetap mendapatkan manasik, pembekalan dokumen, dan arahan teknis sebelum keberangkatan.
+
+### Kapan Waktu Terbaik Mendaftar?
+
+Jika Anda mencari **umrah lombok murah** dari Bima, waktu terbaik untuk mendaftar adalah jauh sebelum musim ramai. Semakin awal mendaftar, semakin besar peluang memperoleh harga paket yang lebih stabil, pilihan kamar yang lebih baik, dan kepastian seat penerbangan yang lebih aman.
+
+Bagi calon jamaah dari Bima yang ingin fokus pada ibadah dengan biaya yang terkendali, Amantubillahi menyiapkan jalur konsultasi, perencanaan anggaran, dan rekomendasi paket hemat yang tetap nyaman. Gunakan halaman booking untuk menanyakan jadwal keberangkatan dan estimasi paket yang paling sesuai dengan kebutuhan keluarga Anda.`,
+    seoScore: 91,
+    seoFeedback: {
+      keywordDensity: 1.9,
+      keywordInTitle: true,
+      keywordInMetaDesc: true,
+      contentLengthOk: true,
+      suggestions: [
+        "Tambahkan tautan internal ke bagian paket hemat agar mendorong konversi dari pembaca artikel.",
+        "Sisipkan satu referensi FAQ biaya tambahan untuk memperkuat intent komersial."
+      ]
+    }
+  },
+  {
+    id: "blog-7",
+    title: "Umrah Lombok Murah untuk Warga Dompu: Paket Hemat dengan Alur Pendaftaran yang Jelas",
+    slug: "umrah-lombok-murah-dompu",
+    city: "Dompu",
+    date: "2026-06-06",
+    views: 0,
+    readTimeMin: 6,
+    tags: ["Umrah Lombok Murah", "Dompu", "NTB", "Paket Hemat"],
+    imageUrl: pilgrimsGroupImage,
+    seoFocusKeyword: "umrah lombok murah",
+    seoMetaTitle: "Umrah Lombok Murah untuk Warga Dompu | Travel Resmi dan Paket Hemat",
+    seoMetaDesc: "Butuh umrah lombok murah untuk Dompu? Pelajari cara memilih paket hemat yang resmi, alur pendaftaran, dan tips mengamankan kuota keberangkatan dari Dompu.",
+    content: `Banyak calon jamaah dari **Dompu**, Hu'u, Woja, Kempo, dan sekitarnya mencari solusi **umrah lombok murah** yang tetap amanah dan mudah diikuti prosesnya. Kebutuhan ini sangat wajar, karena jamaah ingin biaya keberangkatan lebih efisien tanpa harus mengorbankan legalitas travel, kualitas hotel, atau kenyamanan pendampingan selama ibadah.
+
+Amantubillahi menghadirkan pilihan **umrah lombok murah** bagi warga Dompu dengan pendekatan yang realistis: harga dibuat hemat, tetapi elemen penting perjalanan tetap dijaga. Jamaah tetap memperoleh panduan pendaftaran, jadwal manasik, pendampingan administrasi, dan arahan keberangkatan yang tertata melalui Lombok sebagai titik koordinasi utama.
+
+### Mengapa Jamaah Dompu Perlu Selektif Memilih Paket Hemat?
+
+Tidak semua penawaran murah benar-benar menguntungkan. Ada paket yang tampak rendah di awal, tetapi ternyata belum termasuk perlengkapan, makan, atau biaya proses dokumen. Karena itu, jamaah Dompu sebaiknya memastikan beberapa hal berikut:
+
+1. **Harga bersifat transparan** dan dijelaskan rinci sejak awal.
+2. **Keberangkatan memiliki jadwal yang masuk akal** serta tidak terlalu bergantung pada janji tanpa kepastian.
+3. **Travel mudah dihubungi** ketika jamaah membutuhkan update berkas atau perubahan jadwal.
+4. **Pendampingan ibadah tersedia** sehingga jamaah lansia dan pemula tidak kebingungan saat umrah berlangsung.
+
+### Skema Umrah Lombok Murah yang Cocok untuk Dompu
+
+Untuk warga Dompu, paket hemat biasanya paling cocok bila dipersiapkan lebih awal dan dilakukan secara rombongan. Pendaftaran lebih dini memberi peluang harga lebih kompetitif, sementara pendaftaran kelompok membantu efisiensi koordinasi dokumen dan perjalanan menuju titik keberangkatan. Inilah alasan mengapa banyak keluarga memilih konsultasi sejak awal agar dapat mencocokkan jadwal, kapasitas dana, dan kesiapan paspor.
+
+Selain itu, jamaah Dompu juga diuntungkan bila travel menyediakan komunikasi yang cepat dan responsif. Dengan begitu, calon jamaah tidak perlu sering bepergian hanya untuk menanyakan perkembangan pendaftaran. Semua bisa dipersiapkan bertahap sampai mendekati waktu manasik dan keberangkatan.
+
+### Fokus pada Hemat, Tetap Nyaman untuk Ibadah
+
+Program **umrah lombok murah** yang baik tidak hanya bicara angka, tetapi juga memastikan jamaah dapat beribadah dengan tenang. Mulai dari akomodasi, konsumsi, perpindahan antar kota suci, sampai pembimbing ibadah harus tetap disiapkan dengan layak. Tujuan akhirnya adalah jamaah Dompu bisa menjalankan ibadah secara khusyuk, bukan malah terbebani masalah teknis di tengah perjalanan.
+
+Jika Anda berada di Dompu dan sedang membandingkan beberapa pilihan **umrah lombok murah**, prioritaskan travel yang jelas legalitasnya, komunikatif, dan terbuka soal rincian paket. Dari sana, Anda bisa memilih paket yang paling sesuai dengan kemampuan dana tanpa mengorbankan rasa aman dan kenyamanan ibadah.`,
+    seoScore: 90,
+    seoFeedback: {
+      keywordDensity: 1.8,
+      keywordInTitle: true,
+      keywordInMetaDesc: true,
+      contentLengthOk: true,
+      suggestions: [
+        "Tambahkan tautan ke form booking untuk menangkap intent transaksi pembaca dari Dompu.",
+        "Perkuat frasa lokal seperti Woja dan Hu'u sekali lagi di bagian penutup."
+      ]
+    }
+  },
+  {
+    id: "blog-8",
+    title: "Umrah Lombok Murah untuk Sumbawa: Tips Mendapatkan Paket Hemat dan Jadwal Terbaik",
+    slug: "umrah-lombok-murah-sumbawa",
+    city: "Sumbawa",
+    date: "2026-06-06",
+    views: 0,
+    readTimeMin: 6,
+    tags: ["Umrah Lombok Murah", "Sumbawa", "Sumbawa Besar", "Paket Umrah"],
+    imageUrl: manIhramPrayImage,
+    seoFocusKeyword: "umrah lombok murah",
+    seoMetaTitle: "Umrah Lombok Murah untuk Sumbawa | Panduan Paket Hemat Amantubillahi",
+    seoMetaDesc: "Ingin umrah lombok murah dari Sumbawa? Simak tips memilih paket hemat, waktu daftar terbaik, dan strategi menekan biaya tanpa mengurangi kenyamanan ibadah.",
+    content: `Warga **Sumbawa Besar**, Labuhan Badas, Alas, Empang, dan wilayah lain di Pulau Sumbawa semakin banyak mencari informasi tentang **umrah lombok murah**. Alasannya sederhana: jamaah ingin memperoleh biaya yang lebih terjangkau, tetapi tetap berangkat bersama travel yang jelas, memiliki alur pelayanan rapi, dan memberi rasa tenang sejak pendaftaran hingga pulang dari tanah suci.
+
+Bagi calon jamaah dari Sumbawa, pilihan **umrah lombok murah** sangat relevan karena keberangkatan dapat direncanakan melalui Lombok dengan jadwal yang lebih mudah disusun. Skema ini membuat proses pengumpulan berkas, koordinasi rombongan, dan manasik menjadi lebih terpusat, sehingga jamaah dapat fokus menyiapkan ibadah tanpa kebingungan teknis.
+
+### Cara Menemukan Umrah Lombok Murah yang Tetap Berkualitas
+
+Ada beberapa langkah praktis yang perlu diperhatikan oleh jamaah Sumbawa:
+
+1. **Bandingkan isi paket, bukan hanya harga**. Harga murah yang sehat adalah harga yang tetap mencakup kebutuhan pokok jamaah.
+2. **Tanyakan posisi hotel dan fasilitas utama**. Jamaah perlu tahu apakah hotel, konsumsi, dan transportasi internal cukup nyaman untuk menunjang ibadah.
+3. **Cek timeline pendaftaran**. Travel yang baik akan menjelaskan kapan pelunasan, kapan manasik, dan kapan perkiraan keberangkatan.
+4. **Pastikan ada jalur komunikasi yang aktif**. Ini penting bagi jamaah yang berdomisili jauh dari kantor pusat.
+
+### Keuntungan Jamaah Sumbawa Mendaftar Lebih Awal
+
+Banyak calon jamaah tidak sadar bahwa harga **umrah lombok murah** biasanya lebih mudah didapat ketika reservasi dilakukan lebih awal. Pendaftaran dini membantu travel mengamankan seat, hotel, dan kebutuhan rombongan dengan biaya yang lebih efisien. Bagi warga Sumbawa, strategi ini sangat penting karena memungkinkan perencanaan perjalanan domestik menuju titik keberangkatan dilakukan tanpa terburu-buru.
+
+Pendaftaran lebih cepat juga memberi keleluasaan bagi jamaah untuk menyiapkan dokumen, anggaran, dan kebutuhan keluarga. Ini sangat membantu untuk jamaah yang berangkat berdua, berombongan keluarga, atau ingin menyesuaikan keberangkatan dengan musim kerja dan agenda rumah tangga.
+
+### Pilihan Hemat untuk Jamaah Sumbawa yang Tetap Fokus Ibadah
+
+Program **umrah lombok murah** ideal untuk Sumbawa adalah program yang efisien di biaya, tetapi tetap kuat di pelayanan. Jamaah tetap membutuhkan pembimbing yang komunikatif, informasi yang jelas, serta dukungan administrasi yang memudahkan. Dengan kombinasi itu, biaya bisa lebih terkendali sementara kualitas perjalanan tetap layak.
+
+Jika Anda sedang membandingkan beberapa opsi **umrah lombok murah** dari Sumbawa, prioritaskan travel yang menjelaskan rincian paket secara terbuka dan tidak berlebihan dalam promosi. Dengan begitu, Anda bisa mengambil keputusan yang lebih tenang, realistis, dan siap beribadah dengan nyaman bersama keluarga.`,
+    seoScore: 90,
+    seoFeedback: {
+      keywordDensity: 1.9,
+      keywordInTitle: true,
+      keywordInMetaDesc: true,
+      contentLengthOk: true,
+      suggestions: [
+        "Tambahkan tautan internal ke artikel perbandingan travel untuk memperkuat topical cluster.",
+        "Sisipkan kata kunci turunan seperti paket umrah hemat Sumbawa satu kali di subjudul."
+      ]
+    }
   }
 ];
 

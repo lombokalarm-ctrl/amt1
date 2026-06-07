@@ -134,6 +134,7 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
     "Lombok Tengah",
     "Lombok Timur",
     "Sumbawa",
+    "Dompu",
     "Bima"
   ];
 

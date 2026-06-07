@@ -168,10 +168,22 @@ function loadStore(): PersistedStore {
           return { ...blog, imageUrl: normalizedImage };
         })
       : defaults.blogs;
+    const existingBlogIds = new Set(normalizedBlogs.map((blog) => blog.id));
+    const existingBlogSlugs = new Set(normalizedBlogs.map((blog) => blog.slug));
+    const mergedBlogs = [...normalizedBlogs];
+
+    for (const defaultBlog of defaults.blogs) {
+      if (existingBlogIds.has(defaultBlog.id) || existingBlogSlugs.has(defaultBlog.slug)) {
+        continue;
+      }
+
+      mergedBlogs.push({ ...defaultBlog, imageUrl: normalizeImageUrlValue(defaultBlog.imageUrl) });
+      shouldRewriteStore = true;
+    }
 
     const loadedStore: PersistedStore = {
       packages: normalizedPackages,
-      blogs: normalizedBlogs,
+      blogs: mergedBlogs,
       header: parsed.header ? { ...defaults.header, ...parsed.header } : defaults.header,
       footer: parsed.footer ? { ...defaults.footer, ...parsed.footer } : defaults.footer,
       stats: parsed.stats
