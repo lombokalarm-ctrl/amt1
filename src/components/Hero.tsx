@@ -121,8 +121,8 @@ export default function Hero({ onScrollToSection, phone }: HeroProps) {
                       <Compass className="w-5 h-5 shrink-0" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-white text-sm">Pimbingan Sesuai Sunnah</h4>
-                      <p className="text-xs text-emerald-200/70 leading-relaxed">Mutawwif bersertifikat Kemenag membantun kemurnian rukun ibadah.</p>
+                      <h4 className="font-bold text-white text-sm">Bimbingan Sesuai Sunnah</h4>
+                      <p className="text-xs text-emerald-200/70 leading-relaxed">Mutawwif bersertifikat Kemenag membantu menjaga kemurnian rukun ibadah.</p>
                     </div>
                   </li>
 

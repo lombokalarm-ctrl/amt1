@@ -100,7 +100,7 @@ Sebagai salah satu penyedia **travel umrah lombok** resmi yang berkantor di pusa
 
 ### Mengapa Memilih Travel Umroh Terpercaya Amantubillahi di Lombok?
 
-1. **Izin Resmi Kementerian Agama**: Amantubillahi menjamin keamanan keberangkatan jamaah dengan legalitas lengkap. No izin PPUI terverifikasi, menjamin Anda terhindar dari penipuan travel bodong.
+1. **Izin Resmi Kementerian Agama**: Amantubillahi menjamin keamanan keberangkatan jamaah dengan legalitas lengkap. No izin PPIU terverifikasi, menjamin Anda terhindar dari penipuan travel bodong.
 2. **Penerbangan Langsung dari bandara Lombok (LOP)**: Kami menyediakan paket penerbangan langsung atau transit minimalis untuk meminimalkan kelelahan jamaah, khususnya jamaah lanjut usia dari Ampenan, Narmada, Gerung, dan Sekotong.
 3. **Pilihan Hotel Dekat Masjid**: Mulai hotel Bintang 3 hemat hingga Bintang 5 premium seperti Pullman Zamzam, memberikan kedekatan akses fisik ke Masjidil Haram dan Masjid Nabawi.
 

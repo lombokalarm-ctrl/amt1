@@ -30,10 +30,23 @@ const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
 const BOOKING_STATUS_VALUES: Booking["status"][] = ["Pending", "Dihubungi", "Selesai"];
 const STATS_ACTION_VALUES = ["whatsapp", "booking", "pageview"] as const;
 const APP_URL = process.env.APP_URL?.trim().replace(/\/+$/, "") || "";
+const APP_BASE_URL = (() => {
+  if (!APP_URL) {
+    return null;
+  }
+
+  try {
+    return new URL(APP_URL);
+  } catch {
+    console.warn(`Invalid APP_URL configured: ${APP_URL}`);
+    return null;
+  }
+})();
 const DEFAULT_PAGE_TITLE = "Amantubillahi Tour | Travel Umroh Lombok Terpercaya";
 const DEFAULT_PAGE_DESCRIPTION =
   "Amantubillahi Tour adalah travel umroh Lombok terpercaya dengan paket keberangkatan terkurasi, layanan booking online, dan panduan umroh NTB yang siap diproduksi.";
 
+app.set("trust proxy", true);
 app.disable("x-powered-by");
 app.use(express.json({ limit: "1mb" }));
 app.use((req, res, next) => {
@@ -76,6 +89,11 @@ interface PageMetadata {
   twitterTitle: string;
   twitterDescription: string;
   twitterImage: string;
+}
+
+interface SitemapEntry {
+  loc: string;
+  lastmod: string;
 }
 
 function clone<T>(value: T): T {
@@ -266,13 +284,88 @@ function toPlainText(input: string) {
   return input.replace(/[#*`_>\[\]\(\)\r\n]+/g, " ").replace(/\s+/g, " ").trim();
 }
 
+function normalizeHostname(input: string) {
+  return input.toLowerCase().replace(/\.$/, "");
+}
+
+function isLocalHostname(hostname: string) {
+  return hostname === "localhost" || hostname === "127.0.0.1" || hostname === "::1" || hostname.endsWith(".local");
+}
+
 function getBaseUrl(req: express.Request) {
-  if (APP_URL) {
-    return APP_URL;
+  if (APP_BASE_URL) {
+    return APP_BASE_URL.origin;
   }
 
   return `${req.protocol}://${req.get("host")}`;
 }
+
+function getLatestPublishedDate() {
+  const latestBlogDate = [...blogsDb]
+    .map((blog) => blog.date)
+    .filter(Boolean)
+    .sort((a, b) => Date.parse(b) - Date.parse(a))[0];
+
+  return latestBlogDate || new Date().toISOString().split("T")[0];
+}
+
+function buildSitemapXml(req: express.Request) {
+  const baseUrl = getBaseUrl(req);
+  const lastmod = getLatestPublishedDate();
+  const entries: SitemapEntry[] = [
+    { loc: `${baseUrl}/`, lastmod },
+    ...blogsDb
+      .filter((blog) => blog.slug)
+      .map((blog) => ({
+        loc: `${baseUrl}/artikel/${blog.slug}`,
+        lastmod: blog.date || lastmod,
+      })),
+  ];
+
+  const urlset = entries
+    .map(
+      (entry) =>
+        `  <url>\n    <loc>${escapeHtml(entry.loc)}</loc>\n    <lastmod>${escapeHtml(entry.lastmod)}</lastmod>\n  </url>`,
+    )
+    .join("\n");
+
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlset}\n</urlset>\n`;
+}
+
+app.use((req, res, next) => {
+  if (process.env.NODE_ENV !== "production" || !APP_BASE_URL || !["GET", "HEAD"].includes(req.method)) {
+    return next();
+  }
+
+  const requestHost = normalizeHostname(req.hostname || req.get("host") || "");
+  const canonicalHost = normalizeHostname(APP_BASE_URL.hostname);
+
+  if (!requestHost || requestHost === canonicalHost || isLocalHostname(requestHost)) {
+    return next();
+  }
+
+  const redirectUrl = new URL(req.originalUrl || "/", APP_BASE_URL.origin).toString();
+  res.redirect(301, redirectUrl);
+});
+
+app.get("/robots.txt", (req, res) => {
+  const baseUrl = getBaseUrl(req);
+  res.type("text/plain").send(
+    [
+      "User-agent: *",
+      "Allow: /",
+      "Disallow: /api/admin",
+      "Disallow: /api/stats",
+      "Disallow: /api/reports",
+      `Sitemap: ${baseUrl}/sitemap.xml`,
+      "",
+    ].join("\n"),
+  );
+});
+
+app.get("/sitemap.xml", (req, res) => {
+  res.type("application/xml").send(buildSitemapXml(req));
+});
 
 function toAbsolutePublicUrl(baseUrl: string, value?: string) {
   if (!value) {

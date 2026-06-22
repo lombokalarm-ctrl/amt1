@@ -59,7 +59,7 @@ export default function FAQ() {
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
             <div className="md:col-span-8 space-y-2">
               <span className="text-[10px] uppercase font-bold tracking-widest text-emerald-300">Butuh Bantuan Personal?</span>
-              <h3 className="text-xl font-bold font-sans">Masih Ada Pertanyaan Mengenai Syarat Visa & Paspor Pasca Pandemi?</h3>
+              <h3 className="text-xl font-bold font-sans">Masih Ada Pertanyaan Mengenai Syarat Visa, Paspor, dan Dokumen Umroh?</h3>
               <p className="text-xs text-emerald-100/80 leading-relaxed">
                 Asisten pendaftaran khusus kami siap bertamu ke kediaman Anda di seluruh Lombok untuk memberikan penjelasan tatap muka yang tenang dan mendalam demi membina kemantapan niat ibadah Anda.
               </p>
@@ -72,7 +72,7 @@ export default function FAQ() {
                 rel="noreferrer"
                 className="inline-block px-6 py-3 bg-amber-500 hover:bg-amber-400 text-emerald-950 font-bold rounded-xl text-xs sm:text-sm shadow-md transition-colors w-full md:w-auto text-center"
               >
-                Hubungi Petugas Izin
+                Konsultasi Dokumen & Visa
               </a>
             </div>
           </div>

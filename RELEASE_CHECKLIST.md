@@ -112,17 +112,17 @@ Gunakan dokumen ini sebagai checklist final sebelum deploy production.
 - [ ] Owner: `Ops/SEO`
   Status: `BLOCKED`
   File: [server.ts](file:///e:/Project/web/amt1/server.ts)
-  Action: Isi `APP_URL` dengan domain production agar canonical dan OG URL tidak memakai host sementara.
+  Action: Isi `APP_URL` dengan `https://amantubillahi.com` agar canonical, OG URL, sitemap, dan redirect host memakai domain production final.
 
 - [ ] Owner: `SEO`
-  Status: `NOT STARTED`
-  File: `public/robots.txt`
-  Action: Tambahkan `robots.txt` final.
+  Status: `DONE IN CODE`
+  File: [server.ts](file:///e:/Project/web/amt1/server.ts)
+  Action: Route `robots.txt` sudah tersedia. Verifikasi output production menampilkan plain text dan URL sitemap final.
 
 - [ ] Owner: `SEO`
-  Status: `NOT STARTED`
-  File: `public/sitemap.xml`
-  Action: Tambahkan `sitemap.xml` final.
+  Status: `DONE IN CODE`
+  File: [server.ts](file:///e:/Project/web/amt1/server.ts)
+  Action: Route `sitemap.xml` sudah tersedia. Verifikasi output production menampilkan XML sitemap dengan host `amantubillahi.com`.
 
 - [ ] Owner: `Design/Dev`
   Status: `NOT STARTED`

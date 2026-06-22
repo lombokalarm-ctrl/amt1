@@ -5,7 +5,7 @@ export const faqEntries = [
   },
   {
     q: "Bagaimana rute penerbangan umroh dari bandara Lombok (LOP)?",
-    a: "Tergantung pilihan paket, kami menyediakan rute penerbangan langsung (direct-flight) Lombok ke Jeddah menggunakan sewaan maskapai seperti Lion Air Premium Premium, atau dengan transit minimal yang nyaman seperti Garuda Indonesia melalui Jakarta atau AirAsia melalui Kuala Lumpur menuju Madinah."
+    a: "Tergantung pilihan paket, kami menyediakan rute penerbangan langsung (direct-flight) Lombok ke Jeddah menggunakan sewaan maskapai premium, atau dengan transit minimal yang nyaman seperti Garuda Indonesia melalui Jakarta atau AirAsia melalui Kuala Lumpur menuju Madinah."
   },
   {
     q: "Bagaimana cara melakukan pendaftaran umroh bagi warga di luar kota Mataram (seperti Selong, Bima, Sumbawa)?",

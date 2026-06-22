@@ -1,6 +1,6 @@
 # Deploy VPS
 
-Panduan ini untuk deploy app ke VPS Linux pada folder `/var/www/amt` dengan domain `amt.erp.my.id`.
+Panduan ini untuk deploy app ke VPS Linux pada folder `/var/www/amt` dengan domain utama `amantubillahi.com`.
 
 ## 1. Kebutuhan Server
 
@@ -41,13 +41,14 @@ GEMINI_API_KEY=""
 ADMIN_USERNAME="cmsadmin"
 ADMIN_PASSWORD=""
 ADMIN_PASSWORD_SHA256="ISI_HASH_SHA256_PASSWORD_ADMIN"
-ADMIN_REPORT_EMAIL="admin@amt.erp.my.id"
-APP_URL="https://amt.erp.my.id"
+ADMIN_REPORT_EMAIL="admin@amantubillahi.com"
+APP_URL="https://amantubillahi.com"
 ```
 
 Catatan:
 
 - Gunakan `ADMIN_PASSWORD_SHA256` agar password tidak disimpan plaintext.
+- `APP_URL` wajib memakai domain canonical final agar canonical tag, Open Graph, sitemap, dan redirect host konsisten.
 - Jika memakai fitur AI, isi `GEMINI_API_KEY`.
 
 ## 4. Build App
@@ -77,12 +78,26 @@ curl http://127.0.0.1:3001/api/health
 curl http://127.0.0.1:3001/api/ready
 ```
 
-## 6. Konfigurasi Nginx
+## 6. DNS Yang Wajib Ada
+
+Sebelum mengaktifkan HTTPS, siapkan record DNS:
+
+- `amantubillahi.com` -> `A` ke IP VPS
+- `www.amantubillahi.com` -> `CNAME` ke `amantubillahi.com` atau `A` ke IP VPS yang sama
+
+Verifikasi:
+
+```bash
+dig +short amantubillahi.com
+dig +short www.amantubillahi.com
+```
+
+## 7. Konfigurasi Nginx
 
 Buat file:
 
 ```bash
-sudo nano /etc/nginx/sites-available/amt.erp.my.id
+sudo nano /etc/nginx/sites-available/amantubillahi.com
 ```
 
 Isi:
@@ -90,7 +105,7 @@ Isi:
 ```nginx
 server {
     listen 80;
-    server_name amt.erp.my.id;
+    server_name amantubillahi.com www.amantubillahi.com;
 
     location / {
         proxy_pass http://127.0.0.1:3001;
@@ -108,26 +123,52 @@ server {
 Aktifkan:
 
 ```bash
-sudo ln -s /etc/nginx/sites-available/amt.erp.my.id /etc/nginx/sites-enabled/amt.erp.my.id
+sudo ln -s /etc/nginx/sites-available/amantubillahi.com /etc/nginx/sites-enabled/amantubillahi.com
 sudo nginx -t
 sudo systemctl reload nginx
 ```
 
-## 7. Aktifkan HTTPS
+## 8. Aktifkan HTTPS Yang Benar
 
-Pastikan DNS `amt.erp.my.id` sudah mengarah ke IP VPS, lalu jalankan:
+Pastikan DNS apex dan `www` sudah aktif, lalu jalankan:
 
 ```bash
-sudo certbot --nginx -d amt.erp.my.id
+sudo certbot --nginx -d amantubillahi.com -d www.amantubillahi.com
 ```
 
 Setelah selesai, uji:
 
 ```bash
-curl -I https://amt.erp.my.id
+curl -I https://amantubillahi.com
+curl -I https://www.amantubillahi.com
 ```
 
-## 8. Update Deploy Berikutnya
+Hasil ideal:
+
+- `https://amantubillahi.com` -> `200`
+- `https://www.amantubillahi.com` -> `301` atau `308` ke `https://amantubillahi.com`
+
+## 9. Verifikasi SEO Teknis Setelah Deploy
+
+```bash
+curl -I https://amantubillahi.com
+curl https://amantubillahi.com/robots.txt
+curl https://amantubillahi.com/sitemap.xml
+curl https://amantubillahi.com/api/health
+curl https://amantubillahi.com/api/ready
+```
+
+Checklist hasil:
+
+- Sertifikat valid untuk `amantubillahi.com`
+- Sertifikat valid untuk `www.amantubillahi.com`
+- `robots.txt` mengembalikan plain text, bukan HTML
+- `sitemap.xml` mengembalikan XML sitemap, bukan HTML
+- `<link rel="canonical">` di homepage memakai `https://amantubillahi.com/`
+- Halaman artikel memakai canonical `https://amantubillahi.com/artikel/<slug>`
+- `www` tidak tampil sebagai host final, tetapi diarahkan ke apex
+
+## 10. Update Deploy Berikutnya
 
 ```bash
 cd /var/www/amt
@@ -138,12 +179,15 @@ pm2 restart amt
 pm2 logs amt
 ```
 
-## 9. Checklist Singkat
+## 11. Checklist Singkat
 
-- DNS domain sudah mengarah ke VPS
-- `.env` production sudah diisi
+- DNS apex dan `www` sudah mengarah benar
+- `.env` production sudah diisi dengan `APP_URL="https://amantubillahi.com"`
 - `npm run build` sukses
 - `pm2 status` menunjukkan app `online`
 - `curl http://127.0.0.1:3001/api/health` mengembalikan `{"status":"ok"}`
-- `https://amt.erp.my.id` terbuka normal
-- `https://amt.erp.my.id/#admin` bisa login
+- `https://amantubillahi.com` terbuka normal tanpa warning sertifikat
+- `https://www.amantubillahi.com` mengarah ke host utama
+- `https://amantubillahi.com/robots.txt` valid
+- `https://amantubillahi.com/sitemap.xml` valid
+- `https://amantubillahi.com/#admin` bisa login

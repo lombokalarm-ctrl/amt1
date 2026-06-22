@@ -34,13 +34,13 @@ export default function Footer({ config }: FooterProps) {
               {config.aboutText}
             </p>
             <div className="flex space-x-4">
-              <a href={config.facebookUrl} target="_blank" rel="noreferrer" className="p-2 bg-emerald-900/30 hover:bg-emerald-950 text-emerald-400 hover:text-emerald-300 rounded-lg transition-colors border border-emerald-800/40">
+              <a aria-label="Facebook Amantubillahi" href={config.facebookUrl} target="_blank" rel="noreferrer" className="p-2 bg-emerald-900/30 hover:bg-emerald-950 text-emerald-400 hover:text-emerald-300 rounded-lg transition-colors border border-emerald-800/40">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href={config.instagramUrl} target="_blank" rel="noreferrer" className="p-2 bg-emerald-900/30 hover:bg-emerald-950 text-emerald-400 hover:text-emerald-300 rounded-lg transition-colors border border-emerald-800/40">
+              <a aria-label="Instagram Amantubillahi" href={config.instagramUrl} target="_blank" rel="noreferrer" className="p-2 bg-emerald-900/30 hover:bg-emerald-950 text-emerald-400 hover:text-emerald-300 rounded-lg transition-colors border border-emerald-800/40">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href={config.youtubeUrl} target="_blank" rel="noreferrer" className="p-2 bg-emerald-900/30 hover:bg-emerald-950 text-emerald-400 hover:text-emerald-300 rounded-lg transition-colors border border-emerald-800/40">
+              <a aria-label="YouTube Amantubillahi" href={config.youtubeUrl} target="_blank" rel="noreferrer" className="p-2 bg-emerald-900/30 hover:bg-emerald-950 text-emerald-400 hover:text-emerald-300 rounded-lg transition-colors border border-emerald-800/40">
                 <Youtube className="w-5 h-5" />
               </a>
             </div>
