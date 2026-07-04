@@ -421,6 +421,318 @@ Jika Anda sedang membandingkan beberapa opsi **umrah lombok murah** dari Sumbawa
         "Sisipkan kata kunci turunan seperti paket umrah hemat Sumbawa satu kali di subjudul."
       ]
     }
+  },
+  {
+    id: "blog-9",
+    title: "Biaya Umrah Lombok Murah 2026: Rincian Paket, Hotel, Visa, dan Tiket",
+    slug: "biaya-umrah-lombok-murah-2026",
+    city: "Lombok",
+    date: "2026-06-06",
+    views: 0,
+    readTimeMin: 7,
+    tags: ["Biaya Umrah Lombok", "Umrah Lombok Murah", "Travel Umrah Lombok", "NTB"],
+    imageUrl: pilgrimsKaabaImage,
+    seoFocusKeyword: "biaya umrah lombok murah",
+    seoMetaTitle: "Biaya Umrah Lombok Murah 2026 | Rincian Paket Resmi Amantubillahi",
+    seoMetaDesc: "Cari biaya umrah Lombok murah 2026? Pelajari rincian paket, hotel, tiket, visa, dan tips memilih travel umrah Lombok murah yang tetap aman dan resmi.",
+    content: `Mencari **biaya umrah Lombok murah** adalah langkah awal yang sangat wajar bagi calon jamaah. Namun dalam praktiknya, harga paket umrah tidak cukup dilihat dari angka paling rendah di brosur. Jamaah perlu memahami apa saja yang termasuk di dalam paket, bagaimana kualitas hotel dan penerbangan, serta apakah travel yang menawarkan program tersebut benar-benar resmi dan transparan.
+
+Bagi masyarakat NTB, khususnya jamaah dari Mataram, Lombok Barat, Lombok Tengah, Lombok Timur, hingga Bima dan Sumbawa, memilih **travel umrah Lombok murah** harus tetap mengutamakan keamanan, legalitas, dan kenyamanan ibadah. Paket hemat tetap bisa didapat, asalkan proses memilihnya tepat.
+
+### Kenapa Biaya Umrah Bisa Berbeda-beda?
+
+Salah satu pertanyaan paling sering muncul adalah mengapa harga umrah antar travel bisa berbeda cukup jauh. Jawabannya karena setiap paket biasanya memiliki komponen biaya yang tidak sama. Perbedaan ini dapat berasal dari maskapai, hotel, jarak hotel ke Masjidil Haram atau Masjid Nabawi, jumlah hari perjalanan, perlengkapan jamaah, hingga layanan pendampingan selama ibadah.
+
+Harga yang lebih murah belum tentu buruk, tetapi jamaah harus memeriksa dengan teliti. Ada paket yang hemat karena keberangkatan di musim yang lebih sepi, hotel yang dipilih lebih sederhana, atau durasi perjalanan yang lebih singkat. Ada juga paket yang tampak murah di awal, tetapi kemudian menambah banyak biaya di belakang.
+
+### Komponen Biaya Umrah Lombok Murah yang Perlu Dipahami
+
+Saat membandingkan paket, pahami dulu unsur utama yang biasanya membentuk total harga:
+
+1. **Tiket pesawat**. Biaya tiket sangat memengaruhi total harga paket. Perbedaan maskapai, rute penerbangan, waktu keberangkatan, dan musim ramai bisa membuat harga berubah cukup besar.
+2. **Visa umrah**. Visa adalah komponen wajib yang tidak boleh diabaikan. Pastikan travel menjelaskan dengan jelas apakah biaya visa sudah termasuk di dalam harga paket atau belum.
+3. **Hotel di Makkah dan Madinah**. Kelas hotel, lokasi, dan jarak ke masjid sangat memengaruhi harga. Hotel yang lebih dekat biasanya membuat biaya paket lebih tinggi, tetapi memberi kenyamanan lebih terutama bagi jamaah lansia atau keluarga.
+4. **Transportasi dan handling**. Transportasi antar kota, penjemputan bandara, handling bagasi, dan koordinasi rombongan juga termasuk unsur penting dalam biaya paket.
+5. **Makan, perlengkapan, dan manasik**. Banyak jamaah lupa memeriksa apakah paket sudah termasuk makan, koper, kain ihram atau mukena, tas, buku panduan, serta kegiatan manasik sebelum keberangkatan.
+
+### Apa Saja yang Biasanya Sudah Termasuk dalam Paket?
+
+Dalam banyak program **umrah Lombok murah**, komponen berikut umumnya sudah masuk dalam paket:
+
+- tiket penerbangan
+- visa umrah
+- hotel selama di Tanah Suci
+- transportasi lokal
+- makan sesuai program
+- perlengkapan dasar jamaah
+- manasik sebelum keberangkatan
+- pendampingan pembimbing ibadah
+
+Meski demikian, jamaah tetap harus meminta penjelasan tertulis. Jangan hanya mengandalkan promosi singkat. Semakin jelas rincian biaya, semakin aman keputusan yang diambil.
+
+### Biaya Murah Boleh, Tapi Jangan Sampai Mengorbankan Hal Penting
+
+Sebagian calon jamaah terlalu fokus pada harga terendah. Padahal tujuan utama adalah ibadah yang tenang dan aman. Karena itu, ada beberapa hal yang sebaiknya tidak dikorbankan hanya demi mendapatkan harga murah:
+
+- legalitas travel
+- kejelasan jadwal keberangkatan
+- akomodasi yang layak
+- pendampingan ibadah
+- kejelasan biaya tambahan
+- transparansi proses administrasi
+
+Jika sebuah paket terlalu murah tetapi penjelasannya samar, jamaah patut lebih berhati-hati. Bandingkan minimal dua atau tiga penawaran sebelum memutuskan.
+
+### Tips Membandingkan Paket Umrah Lombok Murah
+
+Agar tidak salah pilih, gunakan pendekatan berikut saat membandingkan paket:
+
+- **Lihat total manfaat, bukan hanya angka**. Harga lebih rendah belum tentu lebih hemat bila banyak biaya tambahan harus dibayar kemudian.
+- **Tanyakan detail hotel dan durasi perjalanan**. Kadang perbedaan harga berasal dari lokasi hotel yang jauh atau jumlah malam menginap yang berbeda.
+- **Periksa legalitas dan reputasi travel**. Pastikan travel memiliki izin resmi yang jelas dan mudah diverifikasi.
+- **Cek pelayanan sebelum keberangkatan**. Layanan admin, penjelasan dokumen, dan manasik yang tertata rapi biasanya menjadi tanda travel bekerja profesional.
+
+### Waktu Terbaik Mencari Harga Umrah yang Lebih Hemat
+
+Salah satu cara mendapatkan **biaya umrah Lombok murah** adalah mendaftar lebih awal. Booking lebih cepat memberi peluang lebih besar untuk mendapatkan kursi penerbangan, pilihan jadwal yang lebih luas, dan harga yang lebih stabil. Selain itu, jamaah juga memiliki waktu lebih longgar untuk menyiapkan dokumen dan pelunasan.
+
+Bagi jamaah NTB, berkonsultasi sejak awal juga membantu menentukan program yang paling sesuai dengan kebutuhan keluarga, usia jamaah, dan target anggaran.
+
+### Kesimpulan
+
+Memilih **biaya umrah Lombok murah** bukan berarti mengejar harga paling rendah tanpa pertimbangan. Yang lebih penting adalah menemukan paket hemat yang tetap aman, jelas, dan nyaman. Dengan memahami komponen biaya seperti tiket, visa, hotel, makan, dan pendampingan, jamaah bisa membuat keputusan yang lebih tenang.
+
+Jika Anda sedang mencari **travel umrah Lombok murah** yang tetap mengutamakan legalitas, transparansi, dan layanan, langkah terbaik adalah membandingkan paket secara detail lalu berkonsultasi langsung dengan tim travel.
+
+Hubungi tim Amantubillahi Tour untuk konsultasi jadwal, fasilitas, dan pilihan paket umrah Lombok yang sesuai dengan budget Anda.`,
+    seoScore: 92,
+    seoFeedback: {
+      keywordDensity: 1.9,
+      keywordInTitle: true,
+      keywordInMetaDesc: true,
+      contentLengthOk: true,
+      suggestions: [
+        "Tambahkan tautan internal ke artikel perbandingan paket agar intent komersial makin kuat.",
+        "Sisipkan link ke section booking atau halaman paket untuk mendorong konversi."
+      ]
+    }
+  },
+  {
+    id: "blog-10",
+    title: "Cara Memilih Travel Umrah Lombok Murah yang Aman dan Resmi",
+    slug: "cara-memilih-travel-umrah-lombok-murah",
+    city: "Lombok",
+    date: "2026-06-06",
+    views: 0,
+    readTimeMin: 7,
+    tags: ["Travel Umrah Lombok Murah", "Travel Umrah Resmi", "Umrah Lombok", "NTB"],
+    imageUrl: pilgrimsAirportImage,
+    seoFocusKeyword: "travel umrah lombok murah",
+    seoMetaTitle: "Cara Memilih Travel Umrah Lombok Murah yang Aman dan Resmi",
+    seoMetaDesc: "Pelajari cara memilih travel umrah Lombok murah yang aman, resmi, dan transparan. Cek legalitas, jadwal, biaya, hotel, dan layanan sebelum booking.",
+    content: `Banyak calon jamaah ingin mendapatkan **travel umrah Lombok murah**, tetapi pada saat yang sama tetap menginginkan layanan yang aman, nyaman, dan resmi. Keinginan ini sangat masuk akal. Masalahnya, tidak semua penawaran murah memberikan penjelasan yang transparan. Karena itu, calon jamaah perlu memahami cara memilih travel dengan benar sejak awal.
+
+Bagi masyarakat Lombok dan wilayah NTB, keputusan memilih travel tidak boleh hanya berdasarkan harga promosi. Ibadah umrah membutuhkan persiapan administrasi, pendampingan, dan kejelasan keberangkatan. Travel yang baik akan menjelaskan semua itu secara terbuka, bukan hanya menonjolkan angka murah di awal.
+
+### Murah Boleh, Tapi Harus Tetap Aman
+
+Paket hemat bukan sesuatu yang salah. Justru banyak jamaah memang membutuhkan opsi biaya yang lebih efisien. Namun paket murah harus tetap memenuhi tiga syarat utama:
+
+- legalitas jelas
+- rincian biaya transparan
+- jadwal keberangkatan masuk akal
+
+Kalau satu saja dari tiga unsur itu tidak jelas, jamaah perlu lebih berhati-hati. Jangan sampai niat mencari paket hemat justru berujung pada ketidakpastian.
+
+### Langkah Pertama: Cek Legalitas Travel
+
+Hal paling penting saat memilih **travel umrah Lombok murah** adalah memastikan travel tersebut memiliki izin resmi yang dapat diverifikasi. Legalitas menunjukkan bahwa travel beroperasi dengan tanggung jawab dan berada dalam pengawasan yang semestinya.
+
+Jamaah juga sebaiknya melihat apakah travel memiliki kantor, alamat yang jelas, nomor kontak aktif, dan tim admin yang responsif. Semakin mudah travel diverifikasi, semakin besar rasa aman bagi calon jamaah.
+
+### Periksa Rincian Biaya Secara Tertulis
+
+Jangan puas hanya dengan kalimat "harga promo" atau "paket hemat". Mintalah penjelasan rinci mengenai apa saja yang termasuk dalam paket. Hal-hal yang perlu ditanyakan antara lain:
+
+- tiket pesawat
+- visa
+- hotel
+- makan
+- transportasi lokal
+- perlengkapan jamaah
+- manasik
+- biaya tambahan di luar paket
+
+Travel yang profesional biasanya tidak keberatan menjelaskan detail tersebut. Bahkan semakin jelas rinciannya, semakin mudah jamaah membandingkan dengan paket lain.
+
+### Pastikan Jadwal Keberangkatan Jelas
+
+Travel umrah yang baik akan memiliki jadwal keberangkatan yang realistis dan tidak menggantung. Calon jamaah perlu menanyakan kapan perkiraan berangkat, bagaimana proses administrasinya, dan kapan batas pelunasan dilakukan.
+
+Jadwal yang jelas penting agar jamaah bisa menyiapkan dokumen, cuti, dan keuangan dengan lebih tenang. Jika jadwal hanya disebut "menunggu kuota" tanpa penjelasan lebih lanjut, maka calon jamaah perlu menelusuri lebih dalam sebelum membayar.
+
+### Lihat Kualitas Hotel dan Layanan, Bukan Harga Saja
+
+Banyak perbedaan harga paket muncul karena kualitas hotel dan layanan yang berbeda. Jamaah sebaiknya menanyakan:
+
+- kelas hotel
+- perkiraan jarak ke masjid
+- jenis kamar
+- skema pendampingan
+- jumlah pembimbing atau koordinator
+
+Harga murah masih bisa masuk akal bila fasilitas disesuaikan dengan paket hemat. Yang penting, jamaah memahami sejak awal apa yang akan didapat dan apa yang tidak.
+
+### Waspadai Tanda-tanda Penawaran yang Terlalu Murah
+
+Ada beberapa tanda yang patut diwaspadai saat melihat promo **travel umrah Lombok murah**:
+
+1. **Harga terlalu rendah tanpa penjelasan**. Jika selisih harga sangat jauh dari pasaran tetapi tidak ada rincian yang jelas, calon jamaah sebaiknya tidak langsung tergiur.
+2. **Informasi sulit diverifikasi**. Alamat tidak jelas, kontak sulit dihubungi, atau admin menjawab samar adalah tanda yang perlu dicermati.
+3. **Terlalu menekan agar cepat bayar**. Travel yang baik biasanya memberi ruang bagi jamaah untuk bertanya dan memahami isi paket, bukan memaksa transfer secepat mungkin tanpa penjelasan lengkap.
+
+### Pentingnya Layanan Sebelum dan Selama Keberangkatan
+
+Banyak orang hanya menilai travel dari harga. Padahal kualitas layanan sebelum keberangkatan sangat penting. Admin yang rapi, pengumpulan dokumen yang jelas, jadwal manasik yang tertata, dan informasi keberangkatan yang terstruktur adalah bagian dari kenyamanan jamaah.
+
+Di sisi lain, pendampingan selama perjalanan juga memengaruhi pengalaman ibadah. Travel yang baik bukan hanya menjual paket, tetapi juga membantu jamaah melalui proses umrah dengan lebih tenang dan tertib.
+
+### Pilih Travel yang Cocok dengan Kebutuhan Anda
+
+Setiap jamaah punya kebutuhan berbeda. Ada yang mencari paket hemat, ada yang lebih memprioritaskan hotel dekat, ada yang membutuhkan kenyamanan untuk orang tua, dan ada yang ingin berangkat bersama keluarga. Karena itu, memilih travel sebaiknya didasarkan pada kebutuhan pribadi, bukan hanya pada harga termurah.
+
+Bagi jamaah dari Lombok, Sumbawa, Dompu, dan Bima, konsultasi lebih awal sangat membantu untuk menemukan program yang paling sesuai.
+
+### Kesimpulan
+
+Memilih **travel umrah Lombok murah** yang aman dan resmi membutuhkan ketelitian. Calon jamaah sebaiknya memeriksa legalitas, meminta rincian biaya tertulis, memastikan jadwal keberangkatan, menilai kualitas hotel dan layanan, serta mewaspadai penawaran yang terlalu murah tanpa penjelasan.
+
+Paket hemat tetap bisa menjadi pilihan yang baik selama travel tersebut jujur, resmi, dan transparan. Dengan langkah yang tepat, jamaah dapat berangkat dengan lebih tenang dan percaya diri.
+
+Konsultasikan kebutuhan Anda dengan tim Amantubillahi Tour agar mendapatkan pilihan travel umrah Lombok yang sesuai budget, legal, dan jelas jadwalnya.`,
+    seoScore: 91,
+    seoFeedback: {
+      keywordDensity: 1.8,
+      keywordInTitle: true,
+      keywordInMetaDesc: true,
+      contentLengthOk: true,
+      suggestions: [
+        "Tambahkan tautan internal ke artikel legalitas atau FAQ agar trust signal lebih kuat.",
+        "Sisipkan CTA ke WhatsApp pada paragraf akhir untuk menangkap intent transaksi."
+      ]
+    }
+  },
+  {
+    id: "blog-11",
+    title: "Syarat Pendaftaran Umrah Lombok Murah: Dokumen, DP, dan Tahapan Booking",
+    slug: "syarat-pendaftaran-umrah-lombok-murah",
+    city: "Lombok",
+    date: "2026-06-06",
+    views: 0,
+    readTimeMin: 7,
+    tags: ["Syarat Pendaftaran Umrah", "Umrah Lombok Murah", "Booking Umrah", "Dokumen Umrah"],
+    imageUrl: pilgrimsCoupleImage,
+    seoFocusKeyword: "syarat pendaftaran umrah lombok murah",
+    seoMetaTitle: "Syarat Pendaftaran Umrah Lombok Murah: Dokumen, DP, dan Booking",
+    seoMetaDesc: "Pahami syarat pendaftaran umrah Lombok murah, dokumen yang dibutuhkan, proses booking, pembayaran DP, dan tahapan persiapan sebelum keberangkatan.",
+    content: `Salah satu hal yang sering membuat calon jamaah ragu untuk segera mendaftar adalah belum memahami proses administrasi umrah. Padahal jika dijelaskan dengan sederhana, **syarat pendaftaran umrah Lombok murah** sebenarnya tidak rumit. Yang penting, calon jamaah mengetahui dokumen apa yang harus disiapkan, bagaimana alur booking dilakukan, dan kapan waktu terbaik untuk mulai mendaftar.
+
+Bagi jamaah di Lombok maupun wilayah NTB lainnya seperti Bima, Dompu, dan Sumbawa, proses yang jelas akan sangat membantu. Dengan mengetahui tahapan dari awal, jamaah bisa menyiapkan berkas lebih tertib dan menghindari keterlambatan saat mendekati jadwal keberangkatan.
+
+### Kenapa Proses Pendaftaran Harus Dipahami dari Awal?
+
+Banyak calon jamaah terlalu fokus pada harga paket, tetapi belum menyiapkan dokumen dan alur administrasi. Akibatnya, ketika sudah menemukan paket yang sesuai, proses menjadi lambat karena ada berkas yang belum siap atau data yang perlu diperbaiki.
+
+Memahami **syarat pendaftaran umrah Lombok murah** sejak awal membantu jamaah dalam tiga hal:
+
+- menyiapkan dokumen lebih lengkap
+- mengatur pembayaran dengan lebih tenang
+- mengurangi risiko tertunda karena administrasi
+
+### Dokumen yang Umumnya Perlu Disiapkan
+
+Setiap travel bisa memiliki format administrasi masing-masing, tetapi secara umum calon jamaah biasanya perlu menyiapkan beberapa dokumen dasar berikut:
+
+1. **Paspor**. Paspor adalah dokumen utama yang harus dipastikan aktif dan sesuai dengan ketentuan masa berlaku yang dibutuhkan untuk perjalanan.
+2. **Kartu identitas**. Data identitas diperlukan untuk verifikasi administrasi dan pencocokan data jamaah.
+3. **Kartu keluarga atau data pendukung keluarga**. Dokumen ini sering dibutuhkan terutama bila pendaftaran dilakukan untuk pasangan atau keluarga.
+4. **Pas foto**. Travel biasanya akan menginformasikan ketentuan ukuran dan latar foto sesuai kebutuhan administrasi.
+5. **Dokumen pendukung lain sesuai permintaan travel**. Dalam beberapa kasus, ada tambahan formulir, surat pernyataan, atau data lain yang perlu dilengkapi.
+
+Karena itu, langkah terbaik adalah meminta checklist resmi dari admin sejak awal agar tidak ada dokumen yang tertinggal.
+
+### Bagaimana Proses Booking Biasanya Berjalan?
+
+Setelah memilih paket yang dianggap sesuai, proses berikutnya biasanya dimulai dari booking awal. Dalam tahap ini, jamaah mengonfirmasi minat pada paket tertentu, lalu data awal dicatat oleh admin. Setelah itu travel akan menjelaskan jadwal, kuota, perkiraan pelunasan, dan kebutuhan dokumen.
+
+Pada tahap inilah calon jamaah sebaiknya aktif bertanya. Pastikan semua informasi penting dipahami, mulai dari fasilitas paket, jadwal keberangkatan, hingga tahapan pelunasan.
+
+### Fungsi Pembayaran DP dalam Pendaftaran
+
+Dalam banyak program **umrah Lombok murah**, pembayaran DP dilakukan sebagai tanda jadi atau penguncian seat. Ini penting karena ketersediaan kuota, tiket, dan jadwal biasanya terbatas. Dengan adanya DP, travel dapat melanjutkan proses administrasi sesuai jadwal program.
+
+Namun jamaah perlu memastikan beberapa hal sebelum melakukan pembayaran DP:
+
+- nama paket dan jadwal keberangkatan jelas
+- nominal DP diinformasikan secara resmi
+- skema pelunasan dipahami
+- bukti pembayaran terdokumentasi
+- admin yang menerima pembayaran benar dan dapat diverifikasi
+
+Pembayaran sebaiknya dilakukan setelah jamaah memahami detail paket, bukan hanya karena tergiur promo singkat.
+
+### Tahapan Setelah Booking dan DP
+
+Setelah booking awal dilakukan, proses biasanya berlanjut ke beberapa langkah berikut:
+
+1. **Verifikasi data jamaah**. Travel akan mencocokkan nama, identitas, dan dokumen yang dibutuhkan.
+2. **Pelengkapan berkas**. Jika masih ada kekurangan dokumen, jamaah akan diminta melengkapinya dalam batas waktu tertentu.
+3. **Manasik dan briefing**. Tahap ini penting agar jamaah memahami gambaran perjalanan, perlengkapan, dan tata cara ibadah sebelum berangkat.
+4. **Pelunasan sesuai jadwal**. Jamaah perlu mengikuti jadwal pembayaran yang telah ditentukan agar proses keberangkatan tetap aman dan terencana.
+5. **Finalisasi keberangkatan**. Pada tahap akhir, admin biasanya akan menyampaikan informasi teknis terkait jadwal berkumpul, barang bawaan, dan dokumen perjalanan.
+
+### Kesalahan yang Sering Terjadi Saat Mendaftar
+
+Ada beberapa kesalahan umum yang sebaiknya dihindari calon jamaah:
+
+- menunda menyiapkan paspor atau dokumen penting
+- membayar sebelum memahami isi paket
+- tidak menyimpan bukti pembayaran
+- tidak mencocokkan data identitas dengan teliti
+- terlalu lama menunggu hingga kuota hampir penuh
+
+Semakin cepat jamaah mulai menyiapkan dokumen dan berkonsultasi, semakin mudah proses pendaftarannya.
+
+### Tips Agar Pendaftaran Umrah Lebih Lancar
+
+Agar proses berjalan rapi, gunakan langkah sederhana berikut:
+
+- minta checklist dokumen sejak awal
+- tanyakan rincian paket secara tertulis
+- simpan bukti pembayaran dan percakapan penting
+- jangan ragu bertanya soal jadwal dan alur keberangkatan
+- daftar lebih awal agar pilihan paket masih lebih banyak
+
+Bagi jamaah dari luar Kota Mataram, komunikasi yang rapi dengan admin sangat membantu karena proses koordinasi berkas bisa dilakukan lebih terstruktur.
+
+### Kesimpulan
+
+Memahami **syarat pendaftaran umrah Lombok murah** adalah bagian penting dari persiapan ibadah. Proses yang jelas membuat calon jamaah lebih siap, lebih tenang, dan lebih yakin saat memilih paket. Mulai dari dokumen, DP, verifikasi data, hingga tahapan briefing, semuanya perlu dijalani dengan tertib.
+
+Dengan memahami alur sejak awal, jamaah tidak hanya mengejar paket hemat, tetapi juga menjaga agar proses keberangkatan tetap aman dan nyaman.
+
+Hubungi tim Amantubillahi Tour agar proses booking, pengecekan berkas, dan konsultasi jadwal bisa dilakukan lebih cepat.`,
+    seoScore: 91,
+    seoFeedback: {
+      keywordDensity: 1.8,
+      keywordInTitle: true,
+      keywordInMetaDesc: true,
+      contentLengthOk: true,
+      suggestions: [
+        "Tambahkan tautan internal ke artikel biaya agar funnel informasi lebih lengkap.",
+        "Sisipkan FAQ mini tentang paspor dan DP untuk memperkuat intent pendaftaran."
+      ]
+    }
   }
 ];
 

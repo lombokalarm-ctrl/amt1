@@ -16,6 +16,7 @@ import {
 } from "./src/seed";
 import { UmrahPackage, BlogPost, HeaderConfig, FooterConfig, Booking, StatsData, EmailReport } from "./src/types";
 import { faqEntries } from "./src/content/faq";
+import { getArticleMiniFaqs } from "./src/content/articleEnhancements";
 
 dotenv.config();
 
@@ -541,8 +542,9 @@ function buildStructuredData(req: express.Request) {
   const canonicalUrl = `${baseUrl}/artikel/${articleSlug}`;
   const description = matchedBlog.seoMetaDesc?.trim() || toPlainText(matchedBlog.content).slice(0, 160);
   const imageUrl = toAbsolutePublicUrl(baseUrl, matchedBlog.imageUrl) || logoUrl;
+  const articleMiniFaqs = getArticleMiniFaqs(articleSlug);
 
-  return [
+  const structuredData: Record<string, unknown>[] = [
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
@@ -567,6 +569,23 @@ function buildStructuredData(req: express.Request) {
       },
     },
   ];
+
+  if (articleMiniFaqs.length) {
+    structuredData.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: articleMiniFaqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.a,
+        },
+      })),
+    });
+  }
+
+  return structuredData;
 }
 
 function injectPageMetadata(template: string, pageMeta: PageMetadata) {

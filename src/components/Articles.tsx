@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { BlogPost } from "../types";
 import { BookOpen, Calendar, MapPin, Eye, ArrowRight, X, Sparkles, CheckCircle } from "lucide-react";
+import { getArticleMiniFaqs, getArticleRelatedLinks } from "../content/articleEnhancements";
 
 interface ArticlesProps {
   articles: BlogPost[];
@@ -159,6 +160,15 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
     await openArticleByPost(post);
   };
 
+  const handleOpenRelatedArticle = async (slug: string) => {
+    const targetArticle = articles.find((article) => article.slug === slug);
+    if (!targetArticle) {
+      return;
+    }
+
+    await openArticleByPost(targetArticle);
+  };
+
   const handleCloseArticle = () => {
     setReadingArticle(null);
     updateArticleUrl();
@@ -217,6 +227,8 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
       return b.id.localeCompare(a.id);
     })
     .slice(0, 6);
+  const articleMiniFaqs = getArticleMiniFaqs(readingArticle?.slug);
+  const articleRelatedLinks = getArticleRelatedLinks(readingArticle?.slug);
 
   return (
     <section id="artikel" className="py-20 bg-neutral-900 text-white scroll-mt-20">
@@ -368,6 +380,52 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
               {/* Story Content markdown representation wrapper */}
               <div className="p-8 space-y-6 text-neutral-200 text-sm sm:text-base leading-relaxed whitespace-pre-wrap">
                 {readingArticle.content}
+
+                {(articleMiniFaqs.length > 0 || articleRelatedLinks.length > 0) && (
+                  <div className="space-y-6 rounded-2xl border border-emerald-900/60 bg-neutral-950/80 p-6">
+                    {articleMiniFaqs.length > 0 && (
+                      <div className="space-y-4">
+                        <div className="space-y-1">
+                          <span className="inline-flex items-center gap-2 rounded-full bg-emerald-950 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-emerald-300">
+                            <Sparkles className="h-3.5 w-3.5" />
+                            FAQ Mini Artikel
+                          </span>
+                          <h3 className="text-lg font-bold text-white">Pertanyaan yang sering dicari pembaca</h3>
+                        </div>
+
+                        <div className="space-y-3">
+                          {articleMiniFaqs.map((faq) => (
+                            <div key={faq.q} className="rounded-2xl border border-emerald-900/50 bg-neutral-900 px-4 py-4">
+                              <h4 className="text-sm font-bold text-emerald-200">{faq.q}</h4>
+                              <p className="mt-2 whitespace-normal text-sm leading-relaxed text-neutral-300">{faq.a}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {articleRelatedLinks.length > 0 && (
+                      <div className="space-y-3 border-t border-emerald-900/50 pt-5">
+                        <h3 className="text-sm font-bold uppercase tracking-widest text-amber-300">Artikel Terkait</h3>
+                        <div className="grid gap-3 sm:grid-cols-3">
+                          {articleRelatedLinks.map((link) => (
+                            <a
+                              key={link.slug}
+                              href={`/artikel/${link.slug}`}
+                              onClick={(event) => {
+                                event.preventDefault();
+                                void handleOpenRelatedArticle(link.slug);
+                              }}
+                              className="rounded-2xl border border-emerald-900/50 bg-neutral-900 px-4 py-3 text-sm font-semibold text-neutral-200 transition-colors hover:border-emerald-700 hover:text-white"
+                            >
+                              {link.label}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
                 
                 {/* Embedded Call to Action in post */}
                 <div className="bg-neutral-950 border border-emerald-900/60 p-6 rounded-2xl text-center space-y-4 my-8">
