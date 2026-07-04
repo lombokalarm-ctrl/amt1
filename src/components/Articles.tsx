@@ -280,10 +280,6 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
               <a
                 key={post.id}
                 href={`/artikel/${post.slug}`}
-                onClick={(event) => {
-                  event.preventDefault();
-                  void handleOpenArticle(post);
-                }}
                 className="bg-neutral-950 hover:bg-neutral-950/80 rounded-2xl border border-emerald-950/80 overflow-hidden shadow-md hover:shadow-emerald-950/20 cursor-pointer flex flex-col justify-between hover:-translate-y-1 transition-all duration-300 group"
               >
                 <div>

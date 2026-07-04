@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import Packages from "./components/Packages";
 import FAQ from "./components/FAQ";
 import Articles, { onScrollToSection } from "./components/Articles";
+import ArticlePage from "./components/ArticlePage";
 import BookingForm from "./components/BookingForm";
 import Footer from "./components/Footer";
 import AdminCMS from "./components/AdminCMS";
@@ -38,6 +39,15 @@ function isArticlePath() {
   return /^\/artikel\/[^/]+\/?$/.test(window.location.pathname);
 }
 
+function getCurrentArticleSlug() {
+  if (!isArticlePath()) {
+    return null;
+  }
+
+  const match = window.location.pathname.match(/^\/artikel\/([^/]+)\/?$/);
+  return match?.[1] ? decodeURIComponent(match[1]) : null;
+}
+
 function getInitialSection() {
   const initialRoute = getHashRoute();
   if (initialRoute === "#admin") {
@@ -61,6 +71,9 @@ function replaceHash(hash: string) {
 }
 
 export default function App() {
+  const currentArticleSlug = getCurrentArticleSlug();
+  const isArticleRoute = Boolean(currentArticleSlug);
+
   // CMS Configuration States
   const [headerConfig, setHeaderConfig] = useState<HeaderConfig>(initialHeader);
   const [footerConfig, setFooterConfig] = useState<FooterConfig>(initialFooter);
@@ -79,6 +92,8 @@ export default function App() {
   useEffect(() => {
     async function initFetch() {
       try {
+        let nextBlogs = initialBlogs;
+
         const resHF = await fetch("/api/header-footer");
         if (resHF.ok) {
           const data = await resHF.json();
@@ -95,16 +110,23 @@ export default function App() {
         const resBlogs = await fetch("/api/blogs");
         if (resBlogs.ok) {
           const data = await resBlogs.json();
+          nextBlogs = data;
           setBlogs(data);
         }
 
         // StrictMode menjalankan effect dua kali di development; guard ini menjaga analytics tetap idempoten.
         if (!initialPageViewLogged.current) {
           initialPageViewLogged.current = true;
+          const currentSlug = getCurrentArticleSlug();
+          const currentArticle = currentSlug ? nextBlogs.find((blog) => blog.slug === currentSlug) : null;
           await fetch("/api/stats/click", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ action: "pageview", path: "Beranda" })
+            body: JSON.stringify({
+              action: "pageview",
+              path: currentArticle ? `Artikel: ${currentArticle.slug}` : "Beranda",
+              city: currentArticle?.city,
+            })
           });
         }
 
@@ -148,7 +170,11 @@ export default function App() {
     replaceHash(href);
     setIsCMSActive(false);
     setActiveSection(href);
-    onScrollToSection(href);
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        onScrollToSection(href);
+      });
+    });
   };
 
   const openCMSPanel = () => {
@@ -234,6 +260,10 @@ export default function App() {
             onUpdatePackages={handleCMSPackagesUpdate}
             onUpdateBlogs={handleCMSBlogsUpdate}
           />
+        </main>
+      ) : isArticleRoute && currentArticleSlug ? (
+        <main className="flex-1">
+          <ArticlePage slug={currentArticleSlug} articles={blogs} phone={headerConfig.phone} />
         </main>
       ) : (
         <main className="flex-1">
