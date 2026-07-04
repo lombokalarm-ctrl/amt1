@@ -39,6 +39,14 @@ function isArticlePath() {
   return /^\/artikel\/[^/]+\/?$/.test(window.location.pathname);
 }
 
+function isBlogPath() {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  return /^\/blog\/?$/.test(window.location.pathname);
+}
+
 function getCurrentArticleSlug() {
   if (!isArticlePath()) {
     return null;
@@ -54,7 +62,7 @@ function getInitialSection() {
     return "#";
   }
 
-  return isArticlePath() ? "#artikel" : initialRoute;
+  return isArticlePath() || isBlogPath() ? "/blog" : initialRoute;
 }
 
 function replaceHash(hash: string) {
@@ -73,6 +81,7 @@ function replaceHash(hash: string) {
 export default function App() {
   const currentArticleSlug = getCurrentArticleSlug();
   const isArticleRoute = Boolean(currentArticleSlug);
+  const isBlogRoute = isBlogPath();
 
   // CMS Configuration States
   const [headerConfig, setHeaderConfig] = useState<HeaderConfig>(initialHeader);
@@ -146,7 +155,7 @@ export default function App() {
       }
 
       setIsCMSActive(false);
-      setActiveSection(isArticlePath() ? "#artikel" : nextRoute);
+      setActiveSection(isArticlePath() || isBlogPath() ? "/blog" : nextRoute);
     };
 
     window.addEventListener("hashchange", syncRouteFromHash);
@@ -167,6 +176,22 @@ export default function App() {
   };
 
   const navigateToSection = (href: string) => {
+    if (href === "/blog") {
+      if (window.location.pathname !== "/blog") {
+        window.location.assign("/blog");
+        return;
+      }
+
+      setActiveSection("/blog");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    if ((isArticleRoute || isBlogRoute) && href.startsWith("#")) {
+      window.location.assign(href === "#" ? "/" : `/${href}`);
+      return;
+    }
+
     replaceHash(href);
     setIsCMSActive(false);
     setActiveSection(href);
@@ -264,6 +289,10 @@ export default function App() {
       ) : isArticleRoute && currentArticleSlug ? (
         <main className="flex-1">
           <ArticlePage slug={currentArticleSlug} articles={blogs} phone={headerConfig.phone} />
+        </main>
+      ) : isBlogRoute ? (
+        <main className="flex-1">
+          <Articles articles={blogs} mode="archive" />
         </main>
       ) : (
         <main className="flex-1">
@@ -393,6 +422,7 @@ export default function App() {
           {/* 5. Localized Articles list (Lombok city target search engine pages) */}
           <Articles 
             articles={blogs} 
+            mode="homepage"
             onSelectArticle={(slug) => {
               // Navigation callbacks or custom slug logs
               trackCtaInteraction("pageview", `Artikel Baca: ${slug}`);

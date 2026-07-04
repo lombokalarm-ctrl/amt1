@@ -5,8 +5,9 @@ import { getArticleMiniFaqs, getArticleRelatedLinks } from "../content/articleEn
 
 interface ArticlesProps {
   articles: BlogPost[];
-  onSelectArticle: (slug: string) => void;
-  onTrackClick: (action: string, path: string, city?: string) => void;
+  onSelectArticle?: (slug: string) => void;
+  onTrackClick?: (action: string, path: string, city?: string) => void;
+  mode?: "homepage" | "archive";
 }
 
 interface MetadataSnapshot {
@@ -122,7 +123,7 @@ function updateArticleUrl(slug?: string) {
   window.history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
 }
 
-export default function Articles({ articles, onSelectArticle, onTrackClick }: ArticlesProps) {
+export default function Articles({ articles, onSelectArticle, onTrackClick, mode = "homepage" }: ArticlesProps) {
   const [selectedCityFilter, setSelectedCityFilter] = useState<string>("Semua");
   const [readingArticle, setReadingArticle] = useState<BlogPost | null>(null);
   const defaultsRef = useRef<MetadataSnapshot | null>(null);
@@ -138,6 +139,7 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
     "Dompu",
     "Bima"
   ];
+  const isArchiveMode = mode === "archive";
 
   const openArticleByPost = async (post: BlogPost) => {
     try {
@@ -146,8 +148,8 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
         const fullBlog = await response.json();
         setReadingArticle(fullBlog);
         updateArticleUrl(post.slug);
-        onTrackClick("pageview", `Artikel: ${post.slug}`, post.city);
-        onSelectArticle(post.slug);
+        onTrackClick?.("pageview", `Artikel: ${post.slug}`, post.city);
+        onSelectArticle?.(post.slug);
       }
     } catch (e) {
       console.warn("Failed fetching blog view increment:", e);
@@ -215,7 +217,7 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
     ? articles
     : articles.filter(a => a.city.toLowerCase().includes(selectedCityFilter.toLowerCase()) ||
                            selectedCityFilter.toLowerCase().includes(a.city.toLowerCase()));
-  const displayedArticles = [...filteredArticles]
+  const sortedArticles = [...filteredArticles]
     .sort((a, b) => {
       const timeA = Date.parse(a.date) || 0;
       const timeB = Date.parse(b.date) || 0;
@@ -225,8 +227,8 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
       }
 
       return b.id.localeCompare(a.id);
-    })
-    .slice(0, 6);
+    });
+  const displayedArticles = isArchiveMode ? sortedArticles : sortedArticles.slice(0, 6);
   const articleMiniFaqs = getArticleMiniFaqs(readingArticle?.slug);
   const articleRelatedLinks = getArticleRelatedLinks(readingArticle?.slug);
 
@@ -235,14 +237,18 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Module Title */}
-        <div className="text-center max-w-2xl mx-auto mb-12 space-y-4">
-          <span className="text-amber-400 font-bold uppercase tracking-widest text-xs block">Edukasi & Panduan Umrah</span>
+        <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
+          <span className="text-amber-400 font-bold uppercase tracking-widest text-xs block">
+            {isArchiveMode ? "Blog Amantubillahi" : "Artikel Terbaru"}
+          </span>
           <h2 className="text-3xl font-serif font-bold text-white tracking-tight sm:text-4xl italic">
-            Sajian Informasi Haji & Umroh NTB
+            {isArchiveMode ? "Panduan Umrah Lombok dan Arsip Artikel Terbaru" : "Artikel Terbaru Seputar Umrah Lombok"}
           </h2>
           <div className="w-16 h-1 bg-emerald-500 mx-auto rounded-full"></div>
           <p className="text-xs sm:text-sm text-neutral-400">
-            Artikel panduan dan regulasi pendaftaran untuk menjangkau jamaah terdekat di Mataram, Lombok Barat, Praya, Selong, Masbagik, Sumbawa, Bima, dan Dompu.
+            {isArchiveMode
+              ? "Telusuri seluruh artikel Amantubillahi Tour untuk panduan travel umroh Lombok, biaya, syarat pendaftaran, dan tips keberangkatan jamaah dari seluruh NTB."
+              : "Bacaan pilihan minggu ini untuk membantu calon jamaah memahami biaya, legalitas, jadwal, dan tips pendaftaran umrah dari seluruh NTB."}
           </p>
         </div>
 
@@ -271,9 +277,24 @@ export default function Articles({ articles, onSelectArticle, onTrackClick }: Ar
           </div>
         ) : (
           <div className="space-y-4">
-            <div className="flex items-center justify-between gap-3 text-xs text-neutral-400">
-              <span>Menampilkan 6 artikel terbaru agar landing page tetap ringkas dan rapat.</span>
-              <span>{displayedArticles.length} / {filteredArticles.length} artikel</span>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-xs text-neutral-400">
+              <span>
+                {isArchiveMode
+                  ? "Menampilkan seluruh artikel yang sudah dipublikasikan agar pembaca mudah menjelajahi semua topik."
+                  : "Menampilkan 6 artikel terbaru agar landing page tetap ringkas dan mudah dibaca."}
+              </span>
+              <div className="flex items-center gap-3">
+                <span>{displayedArticles.length} / {filteredArticles.length} artikel</span>
+                {!isArchiveMode && (
+                  <a
+                    href="/blog"
+                    className="inline-flex items-center gap-1 rounded-lg border border-emerald-700/50 bg-emerald-950/50 px-3 py-2 font-semibold text-emerald-300 transition-colors hover:border-emerald-500 hover:text-white"
+                  >
+                    <span>Lihat Semua Artikel</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </a>
+                )}
+              </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {displayedArticles.map((post) => (

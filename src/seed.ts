@@ -746,7 +746,7 @@ export const initialHeader: HeaderConfig = {
     { label: "Beranda", href: "#" },
     { label: "Paket Umrah", href: "#paket" },
     { label: "Keunggulan", href: "#keunggulan" },
-    { label: "Artikel & SEO", href: "#artikel" },
+    { label: "Blog", href: "/blog" },
     { label: "Booking Online", href: "#booking" }
   ],
   logoImageUrl: ""

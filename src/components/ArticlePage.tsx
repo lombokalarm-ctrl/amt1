@@ -133,10 +133,10 @@ export default function ArticlePage({ slug, articles, phone }: ArticlePageProps)
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
-                href="/#artikel"
+                href="/blog"
                 className="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-emerald-700"
               >
-                Kembali ke Daftar Artikel
+                Kembali ke Blog
               </a>
               <a
                 href="/"
@@ -165,8 +165,8 @@ export default function ArticlePage({ slug, articles, phone }: ArticlePageProps)
             Kembali ke Beranda
           </a>
           <span className="text-emerald-700">/</span>
-          <a href="/#artikel" className="transition-colors hover:text-white">
-            Artikel & SEO
+          <a href="/blog" className="transition-colors hover:text-white">
+            Blog
           </a>
           <span className="text-emerald-700">/</span>
           <span className="text-amber-300">{article.city}</span>

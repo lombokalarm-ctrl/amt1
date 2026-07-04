@@ -187,6 +187,11 @@ function loadStore(): PersistedStore {
           return { ...blog, imageUrl: normalizedImage };
         })
       : defaults.blogs;
+    const sourceHeaderMenus = Array.isArray(parsed.header?.menus) ? parsed.header.menus : defaults.header.menus;
+    const normalizedHeaderMenus = normalizeHeaderMenus(sourceHeaderMenus);
+    if (JSON.stringify(sourceHeaderMenus) !== JSON.stringify(normalizedHeaderMenus)) {
+      shouldRewriteStore = true;
+    }
     const existingBlogIds = new Set(normalizedBlogs.map((blog) => blog.id));
     const existingBlogSlugs = new Set(normalizedBlogs.map((blog) => blog.slug));
     const mergedBlogs = [...normalizedBlogs];
@@ -203,7 +208,9 @@ function loadStore(): PersistedStore {
     const loadedStore: PersistedStore = {
       packages: normalizedPackages,
       blogs: mergedBlogs,
-      header: parsed.header ? { ...defaults.header, ...parsed.header } : defaults.header,
+      header: parsed.header
+        ? { ...defaults.header, ...parsed.header, menus: normalizedHeaderMenus }
+        : { ...defaults.header, menus: normalizeHeaderMenus(defaults.header.menus) },
       footer: parsed.footer ? { ...defaults.footer, ...parsed.footer } : defaults.footer,
       stats: parsed.stats
         ? {
@@ -301,6 +308,26 @@ function getBaseUrl(req: express.Request) {
   return `${req.protocol}://${req.get("host")}`;
 }
 
+function isBlogArchivePath(pathname: string) {
+  return pathname === "/blog" || pathname === "/blog/";
+}
+
+function normalizeHeaderMenus(menus: HeaderConfig["menus"]) {
+  return menus.map((item) => {
+    const normalizedLabel = item.label.trim().toLowerCase();
+    if (
+      item.href === "#artikel" ||
+      normalizedLabel === "artikel & seo" ||
+      normalizedLabel === "artikel" ||
+      normalizedLabel === "blog"
+    ) {
+      return { label: "Blog", href: "/blog" };
+    }
+
+    return item;
+  });
+}
+
 function getLatestPublishedDate() {
   const latestBlogDate = [...blogsDb]
     .map((blog) => blog.date)
@@ -315,6 +342,7 @@ function buildSitemapXml(req: express.Request) {
   const lastmod = getLatestPublishedDate();
   const entries: SitemapEntry[] = [
     { loc: `${baseUrl}/`, lastmod },
+    { loc: `${baseUrl}/blog`, lastmod },
     ...blogsDb
       .filter((blog) => blog.slug)
       .map((blog) => ({
@@ -406,9 +434,30 @@ function buildPageMetadata(req: express.Request): PageMetadata {
   const baseUrl = getBaseUrl(req);
   const defaultImageUrl = getDefaultImageUrl(baseUrl);
   const landingCanonicalUrl = `${baseUrl}/`;
+  const blogCanonicalUrl = `${baseUrl}/blog`;
   const articleSlug = getArticleSlugFromRequest(req);
 
   if (!articleSlug) {
+    if (isBlogArchivePath(req.path)) {
+      const blogTitle = "Blog Umroh Lombok | Artikel Terbaru Amantubillahi Tour";
+      const blogDescription =
+        "Baca seluruh artikel terbaru Amantubillahi Tour seputar travel umroh Lombok, biaya umrah, syarat pendaftaran, dan panduan jamaah dari seluruh NTB.";
+      return {
+        statusCode: 200,
+        robots: "index,follow",
+        title: blogTitle,
+        description: blogDescription,
+        canonicalUrl: blogCanonicalUrl,
+        ogTitle: blogTitle,
+        ogDescription: blogDescription,
+        ogUrl: blogCanonicalUrl,
+        ogImage: defaultImageUrl,
+        twitterTitle: blogTitle,
+        twitterDescription: blogDescription,
+        twitterImage: defaultImageUrl,
+      };
+    }
+
     return {
       statusCode: 200,
       robots: "index,follow",
@@ -474,6 +523,24 @@ function buildStructuredData(req: express.Request) {
   const logoUrl = getDefaultImageUrl(baseUrl);
 
   if (!articleSlug) {
+    if (isBlogArchivePath(req.path)) {
+      return [
+        {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Blog Umroh Lombok Amantubillahi Tour",
+          url: `${baseUrl}/blog`,
+          description:
+            "Arsip seluruh artikel Amantubillahi Tour tentang travel umroh Lombok, biaya umrah, syarat pendaftaran, dan panduan keberangkatan jamaah NTB.",
+          isPartOf: {
+            "@type": "WebSite",
+            name: organizationName,
+            url: `${baseUrl}/`,
+          },
+        },
+      ];
+    }
+
     return [
       {
         "@context": "https://schema.org",
