@@ -1,7 +1,7 @@
 export const faqEntries = [
   {
     q: "Apakah Amantubillahi memiliki izin resmi PPIU Kemenag?",
-    a: "Ya, Amantubillahi memiliki Izin Resmi Penyelenggara Perjalanan Ibadah Umrah (PPIU) dari Kementerian Agama RI dengan No. 08022200332870003. Alamat kantor pusat kami sangat jelas berlokasi di pusat Kota Mataram sebelah barat Kantor Gubernur NTB, sehingga jamaah dari Selong, Praya, Gerung, maupun Sumbawa dapat dengan mudah memverifikasi keaslian izin kami langsung."
+    a: "Ya, Amantubillahi memiliki Izin Resmi Penyelenggara Perjalanan Ibadah Umrah (PPIU) dari Kementerian Agama RI dengan No. 08022200332870003. Kantor pusat kami berada di Jl. Lingkar Selatan Komplek pertokoan Lingkar Harmony no R03 Mataram NTB, sehingga jamaah dari Selong, Praya, Gerung, maupun Sumbawa dapat dengan mudah memverifikasi keaslian izin kami langsung."
   },
   {
     q: "Bagaimana rute penerbangan umroh dari bandara Lombok (LOP)?",

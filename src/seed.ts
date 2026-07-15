@@ -754,7 +754,7 @@ export const initialHeader: HeaderConfig = {
 
 export const initialFooter: FooterConfig = {
   aboutText: "Amantubillahi (amantubillahi.com) adalah agen travel umroh berizin resmi dan terpercaya di Lombok, Nusa Tenggara Barat. Kami melayani keberangkatan jamaah umrah dari seluruh wilayah NTB dengan komitmen pelayanan prima, akomodasi berbintang yang dekat dengan masjid, dan pendampingan ibadah murni sesuai sunnah.",
-  address: "Jl. Langko No. 45, Ampenan, Kota Mataram, Nusa Tenggara Barat 83114 (Sebelah Barat Kantor Gubernur NTB)",
+  address: "Jl. Lingkar Selatan Komplek pertokoan Lingkar Harmony no R03 Mataram NTB",
   phone: "+62 819-0708-7999",
   email: "info@amantubillahi.com",
   facebookUrl: "https://facebook.com/amantubillahi.umrohlombok",
